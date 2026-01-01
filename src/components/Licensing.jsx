@@ -42,7 +42,7 @@ const Licensing = () => {
       popular: false,
       contractDetails: {
         delivery: "High-quality WAV, MP3, and Track Stems",
-        rights: "Non-exclusive license; Includes Spotify promo and consultation",
+        rights: "Non-exclusive license",
         usage: "Unlimited for-profit and non-profit live performances",
         ownership: "Master recording is a 'work made for hire' for Artist",
         publishing: "50% Licensor / 50% Licensee split"

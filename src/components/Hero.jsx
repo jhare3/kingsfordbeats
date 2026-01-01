@@ -17,19 +17,19 @@ const Hero = () => {
 
   // Expanded stack of 12 records with varied colors
   const records = [
-    { id: 1, front: "bg-zinc-100", back: "bg-red-600", label: "01" },
-    { id: 2, front: "bg-zinc-200", back: "bg-zinc-900", label: "02" },
-    { id: 3, front: "bg-zinc-300", back: "bg-zinc-800", label: "03" },
-    { id: 4, front: "bg-zinc-200", back: "bg-zinc-900", label: "04" },
-    { id: 5, front: "bg-zinc-100", back: "bg-red-600", label: "05" },
-    { id: 6, front: "bg-zinc-50", back: "bg-zinc-800", label: "06" },
-    { id: 7, front: "bg-zinc-100", back: "bg-red-600", label: "07" },
-    { id: 8, front: "bg-zinc-200", back: "bg-zinc-900", label: "08" },
-    { id: 9, front: "bg-zinc-300", back: "bg-zinc-800", label: "09" },
-    { id: 10, front: "bg-zinc-200", back: "bg-zinc-900", label: "10" },
-    { id: 11, front: "bg-zinc-100", back: "bg-red-600", label: "11" },
-    { id: 12, front: "bg-zinc-50", back: "bg-zinc-800", label: "12" },
-  ];
+  { id: 1, front: "bg-zinc-100", back: "psyched-pink", label: "01" },
+  { id: 2, front: "bg-zinc-200", back: "psyched-acid", label: "02" },
+  { id: 3, front: "bg-zinc-300", back: "psyched-blue", label: "03" },
+  { id: 4, front: "bg-zinc-200", back: "psyched-orange", label: "04" },
+  { id: 5, front: "bg-zinc-100", back: "psyched-purple", label: "05" },
+  { id: 6, front: "bg-zinc-50",  back: "psyched-cyan", label: "06" },
+  { id: 7, front: "bg-zinc-100", back: "psyched-pink", label: "07" },
+  { id: 8, front: "bg-zinc-200", back: "psyched-acid", label: "08" },
+  { id: 9, front: "bg-zinc-300", back: "psyched-blue", label: "09" },
+  { id: 10, front: "bg-zinc-200", back: "psyched-orange", label: "10" },
+  { id: 11, front: "bg-zinc-100", back: "psyched-purple", label: "11" },
+  { id: 12, front: "bg-zinc-50",  back: "psyched-cyan", label: "12" },
+];
 
   const scrollToPlayer = () => {
     const player = document.getElementById('beat-store');
@@ -55,14 +55,14 @@ const Hero = () => {
         {/* Branding Overlay */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center w-full">
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter mix-blend-difference text-white uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-            Kingsford<span className="text-red-600">Beats</span>
+            Chill<span className="text-red-600">Beats</span>
           </h1>
           <button 
-            className="mt-8 pointer-events-auto bg-white text-black py-4 px-10 font-extrabold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300 shadow-xl border-2 border-black"
+            className="mt-8 pointer-events-auto bg-white text-black py-4 px-10 font-extrabold uppercase tracking-widest hover:bg-[#92c957] hover:text-white transition-all duration-300 shadow-xl border-2 border-black"
             onClick={scrollToPlayer}
           >
             Browse Beats
-          </button>
+        </button>
         </div>
 
         <div className="relative w-full h-full flex items-center">
@@ -98,7 +98,12 @@ const Hero = () => {
                   className="absolute inset-0 rounded-full overflow-hidden backface-hidden flex items-center justify-center shadow-2xl"
                   style={{ 
                     transform: 'rotateY(180deg)',
-                    backgroundColor: record.back === 'bg-red-600' ? '#dc2626' : '#18181b' 
+                    backgroundColor: record.back === 'psyched-pink' ? '#f472b6' : 
+                                   record.back === 'psyched-acid' ? '#fbbf24' : 
+                                   record.back === 'psyched-blue' ? '#3b82f6' : 
+                                   record.back === 'psyched-orange' ? '#fb923c' : 
+                                   record.back === 'psyched-purple' ? '#a855f7' : 
+                                   record.back === 'psyched-cyan' ? '#06b6d4' : '#18181b'
                   }}
                 >
                   <div className="absolute inset-0 opacity-20" style={{ background: 'repeating-radial-gradient(circle, #000, #000 1px, #222 3px)' }}></div>
