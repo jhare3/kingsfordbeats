@@ -1,20 +1,23 @@
 /* --- 1. GLOBAL & SCROLL RESET --- */
 html {
   scroll-behavior: smooth;
-  /* (Banner 40px + Scrolled Navbar 70px) = 110px offset */
   scroll-padding-top: 110px; 
 }
 
-/* --- 2. HEADER STACK (DARK THEME) --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
 
-/* High-Contrast Dark Liquid Glass Banner */
+/* --- 2. HEADER STACK --- */
 .urgency-banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 40px;
-  background: rgba(0, 0, 0, 0.9); /* Deep dark glass */
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -24,12 +27,10 @@ html {
   justify-content: center;
 }
 
-.urgency-banner span, 
-.urgency-banner div {
-  color: white !important; /* Bright white text for the dark banner */
+.urgency-banner span {
+  color: white !important;
 }
 
-/* Base Navbar Positioning */
 .navbar {
   position: fixed;
   top: 40px; 
@@ -41,123 +42,64 @@ html {
   background: transparent;
 }
 
-/* Darkened Scrolled State */
 .navbar.scrolled {
-  top: 40px; 
-  height: 70px;
-  background: rgba(5, 5, 5, 0.85); /* Matches your deep dark theme */
+  background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  height: 70px;
 }
 
-.navbar.scrolled .nav-links a,
-.navbar.scrolled .nav-logo {
-  color: white !important; /* Force white text for visibility on dark glass */
-}
-
-/* --- 3. HERO & MAIN CONTENT --- */
-
-/* src/App.css */
-
+/* --- 3. HERO & PSYCHEDELIC ANIMATIONS --- */
 .hero {
-  height: 80vh;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* High-end psychedelic mesh gradient */
-  background: radial-gradient(circle at 20% 30%, #1a1a1a 0%, transparent 40%),
-              radial-gradient(circle at 80% 20%, #2c2c2c 0%, transparent 35%),
-              radial-gradient(circle at 50% 50%, #050505 0%, transparent 50%),
-              radial-gradient(circle at 30% 80%, #111 0%, transparent 40%),
-              radial-gradient(circle at 70% 70%, #ffffff08 0%, transparent 30%);
-  background-color: #000;
-  background-size: 200% 200%;
-  animation: bgShift 15s ease-in-out infinite alternate;
-  text-align: center;
-  padding: 0 20px;
-  overflow: hidden;
-  position: relative;
 }
 
-/* Subtle movement for the psychedelic feel */
-@keyframes bgShift {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 50% 100%; }
-  100% { background-position: 100% 50%; }
+@keyframes psyched-pan {
+  0% { transform: scale(1.1) rotate(0deg) translate(0, 0); filter: hue-rotate(0deg); }
+  33% { transform: scale(1.2) rotate(2deg) translate(15px, -15px); filter: hue-rotate(10deg); }
+  66% { transform: scale(1.15) rotate(-2deg) translate(-15px, 15px); filter: hue-rotate(-10deg); }
+  100% { transform: scale(1.1) rotate(0deg) translate(0, 0); filter: hue-rotate(0deg); }
 }
 
-/* Ensure the title pops against the dark gradient */
+.animate-psyched-pan {
+  animation: psyched-pan 20s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
 .hero-title {
   font-size: clamp(3.5rem, 12vw, 7rem);
   font-weight: 900;
   letter-spacing: -3px;
   line-height: 0.9;
   color: #fff;
-  /* Updated shadow for more depth */
   text-shadow: 0 0 20px rgba(255, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 10;
 }
 
-
+/* --- 4. MAIN CONTENT & EFFECTS --- */
 .main-content {
   position: relative;
   z-index: 60; 
-  padding: 0; /* Changed from 60px 20px to 0 */
   background-color: #000;
-  margin-top: 0; /* Ensure no margin is pushing it down */
 }
 
-/* --- 4. DARK LIQUID GLASS & VINYL EFFECTS --- */
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 
-.liquid-container {
-  filter: url('#liquid'); /* Trippy distortion remains */
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Molten Dark Glass Blobs */
-.glass-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px); /* Heavier blur for darker shadows */
-  animation: blobFloat 25s infinite alternate ease-in-out;
-  pointer-events: none;
-}
-
-.blob-dark-1 {
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(255, 62, 62, 0.08) 0%, transparent 70%); /* Subtle red glow */
-  top: -20%;
-  left: -10%;
-}
-
-.blob-dark-2 {
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%); /* Very faint white highlight */
-  bottom: -30%;
-  right: -5%;
-}
-
-@keyframes blobFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(50px, 100px) scale(1.1); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-/* Vinyl Shine Animation */
 .vinyl-shine {
   background: linear-gradient(
     45deg, 
     transparent 40%, 
-    rgba(255,255,255,0.05) 45%, /* Subdued shine for dark theme */
+    rgba(255,255,255,0.05) 45%, 
     rgba(255,255,255,0.05) 55%, 
     transparent 60%
   );
@@ -166,10 +108,9 @@ html {
   pointer-events: none;
 }
 
-/* --- 5. LICENSING & BUTTONS --- */
-
+/* --- 5. BUTTONS & MODALS --- */
 .license-btn {
-  background: #111; /* Darker button base */
+  background: #111;
   color: white;
   border: 2px solid #222;
   padding: 14px;
@@ -185,32 +126,16 @@ html {
   box-shadow: 0 12px 24px rgba(255, 62, 62, 0.4);
 }
 
-.popular-card .license-btn {
-  background: white;
-  color: black;
-  border: 2px solid white;
-}
-
-.popular-card .license-btn:hover {
-  background: transparent;
-  color: white;
-  border-color: white;
-}
-
-/* src/App.css */
-
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000; /* Higher than Navbar/Banner */
+  z-index: 2000;
   padding: 20px;
 }
 
@@ -220,34 +145,5 @@ html {
   width: 100%;
   max-width: 600px;
   padding: 40px;
-  position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.contract-body p {
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.contract-body strong {
-  display: block;
-  color: #dc2626; /* red-600 */
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 4px;
 }

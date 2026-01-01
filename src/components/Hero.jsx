@@ -10,26 +10,25 @@ const Hero = () => {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80, // Slightly looser for a "heavy" vinyl feel
+    stiffness: 80,
     damping: 30,
     restDelta: 0.001
   });
 
-  // Expanded stack of 12 records with varied colors
   const records = [
-  { id: 1, front: "bg-zinc-100", back: "psyched-pink", label: "01" },
-  { id: 2, front: "bg-zinc-200", back: "psyched-acid", label: "02" },
-  { id: 3, front: "bg-zinc-300", back: "psyched-blue", label: "03" },
-  { id: 4, front: "bg-zinc-200", back: "psyched-orange", label: "04" },
-  { id: 5, front: "bg-zinc-100", back: "psyched-purple", label: "05" },
-  { id: 6, front: "bg-zinc-50",  back: "psyched-cyan", label: "06" },
-  { id: 7, front: "bg-zinc-100", back: "psyched-pink", label: "07" },
-  { id: 8, front: "bg-zinc-200", back: "psyched-acid", label: "08" },
-  { id: 9, front: "bg-zinc-300", back: "psyched-blue", label: "09" },
-  { id: 10, front: "bg-zinc-200", back: "psyched-orange", label: "10" },
-  { id: 11, front: "bg-zinc-100", back: "psyched-purple", label: "11" },
-  { id: 12, front: "bg-zinc-50",  back: "psyched-cyan", label: "12" },
-];
+    { id: 1, front: "bg-zinc-100", back: "psyched-pink", label: "01" },
+    { id: 2, front: "bg-zinc-200", back: "psyched-acid", label: "02" },
+    { id: 3, front: "bg-zinc-300", back: "psyched-blue", label: "03" },
+    { id: 4, front: "bg-zinc-200", back: "psyched-orange", label: "04" },
+    { id: 5, front: "bg-zinc-100", back: "psyched-purple", label: "05" },
+    { id: 6, front: "bg-zinc-50",  back: "psyched-cyan", label: "06" },
+    { id: 7, front: "bg-zinc-100", back: "psyched-pink", label: "07" },
+    { id: 8, front: "bg-zinc-200", back: "psyched-acid", label: "08" },
+    { id: 9, front: "bg-zinc-300", back: "psyched-blue", label: "09" },
+    { id: 10, front: "bg-zinc-200", back: "psyched-orange", label: "10" },
+    { id: 11, front: "bg-zinc-100", back: "psyched-purple", label: "11" },
+    { id: 12, front: "bg-zinc-50",  back: "psyched-cyan", label: "12" },
+  ];
 
   const scrollToPlayer = () => {
     const player = document.getElementById('beat-store');
@@ -39,43 +38,59 @@ const Hero = () => {
       const elementRect = player.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
       const offsetPosition = elementPosition - offset;
-
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="relative bg-white overflow-hidden" 
-      style={{ height: '100vh' }}
-    >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="hero">
+      
+      {/* --- PSYCHEDELIC IMAGE BACKGROUND LAYER --- */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 animate-psyched-pan"
+          style={{ 
+            backgroundImage: `url('https://coolbackgrounds.imgix.net/5GbV8Si50TKkaulnxGwBa/f52a3d7e4d095c0ced0679c79f7d12f6/white-trianglify.jpg?w=3840&q=60&auto=format,compress')`,
+          }}
+        />
+        {/* Dark tint overlay for readability & depth */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+      </div>
+
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10">
         
-        {/* Branding Overlay */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center w-full">
-          <h1 className="text-7xl md:text-9xl font-black tracking-tighter mix-blend-difference text-white uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-            Chill<span className="text-red-600">Beats</span>
-          </h1>
-          <button 
-            className="mt-8 pointer-events-auto bg-white text-black py-4 px-10 font-extrabold uppercase tracking-widest hover:bg-[#92c957] hover:text-white transition-all duration-300 shadow-xl border-2 border-black"
-            onClick={scrollToPlayer}
-          >
-            Browse Beats
-        </button>
+       {/* Branding Overlay */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center w-full px-4">
+          <div className="flex flex-col items-center justify-center space-y-2">
+   {/*         
+            <span className="text-white font-black text-4xl md:text-6xl uppercase tracking-tighter leading-none">
+              Unique Beats
+            </span>
+
+            <div className="bg-red-600 px-4 py-1 transform -rotate-1 shadow-xl">
+              <span className="text-white font-bold text-lg md:text-xl uppercase tracking-widest italic">
+                Never Perfect, Always Art
+              </span>
+            </div>
+
+          
+            <span className="text-white/90 font-light text-xl md:text-2xl uppercase tracking-[0.3em] mt-2">
+              Don't blend in, <span className="font-black text-white">Standout</span>
+            </span>
+*/} 
+            {/* The Button (kept your existing logic) */}
+            <button 
+              className="mt-10 pointer-events-auto bg-white text-black py-4 px-10 font-extrabold uppercase tracking-widest transition-all duration-300 shadow-xl border-2 border-black rounded-full hover:bg-green-500 hover:border-white hover:text-white transform hover:scale-105"
+              onClick={scrollToPlayer}
+            >
+              Browse Beats
+            </button>
+          </div>
         </div>
 
         <div className="relative w-full h-full flex items-center">
           {records.map((record, index) => {
-            // We increase the initial offset multiplier (index * 40) 
-            // and the exit distance to ensure they all pass through
-            const x = useTransform(
-              smoothProgress, 
-              [0, 1], 
-              [`${120 + (index * 35)}%`, `-${250 + (index * 25)}%`]
-            );
-
-            // Staggered rotation for a more chaotic, organic feel
+            const x = useTransform(smoothProgress, [0, 1], [`${120 + (index * 35)}%`, `-${250 + (index * 25)}%`]);
             const rotateY = useTransform(smoothProgress, [0, 1], [0, 720 + (index * 45)]);
 
             return (
