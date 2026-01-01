@@ -5,12 +5,12 @@
 
 
 :root {
-  --brand-gold: #d4af37;
-  --bg-dark: #050505;
+  --brand-gold: #ffffff;
+  --bg-dark: #000000;
 }
 body {
   background-color: var(--bg-dark);
-  color: white;
+  color: rgb(246, 246, 246);
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }

@@ -1,115 +1,183 @@
 /* --- 1. GLOBAL & SCROLL RESET --- */
 html {
   scroll-behavior: smooth;
-  /* (Banner 40px + Scrolled Navbar 70px) = 110px offset for anchors */
+  /* (Banner 40px + Scrolled Navbar 70px) = 110px offset */
   scroll-padding-top: 110px; 
 }
 
-/* --- 2. HEADER STACK (BANNER & NAV) --- */
+/* --- 2. HEADER STACK (DARK THEME) --- */
 
-/* Liquid Glass Banner */
+/* High-Contrast Dark Liquid Glass Banner */
 .urgency-banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 40px;
-  z-index: 1100; /* Stays above everything */
+  background: rgba(0, 0, 0, 0.9); /* Deep dark glass */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1100;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Base Navbar */
-/* Ensure the Navbar starts below the 40px Urgency Banner */
+.urgency-banner span, 
+.urgency-banner div {
+  color: white !important; /* Bright white text for the dark banner */
+}
+
+/* Base Navbar Positioning */
 .navbar {
   position: fixed;
   top: 40px; 
   left: 0;
+  width: 100%;
   height: 80px;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  background: transparent;
 }
 
-/* Update this specific block in your App.css */
+/* Darkened Scrolled State */
 .navbar.scrolled {
-  /* Change from top: 0 to top: 40px to stay below the banner */
   top: 40px; 
   height: 70px;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(5, 5, 5, 0.85); /* Matches your deep dark theme */
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar.scrolled .nav-links a,
+.navbar.scrolled .nav-logo {
+  color: white !important; /* Force white text for visibility on dark glass */
 }
 
 /* --- 3. HERO & MAIN CONTENT --- */
+
+/* src/App.css */
 
 .hero {
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  /* High-end psychedelic mesh gradient */
+  background: radial-gradient(circle at 20% 30%, #1a1a1a 0%, transparent 40%),
+              radial-gradient(circle at 80% 20%, #2c2c2c 0%, transparent 35%),
+              radial-gradient(circle at 50% 50%, #050505 0%, transparent 50%),
+              radial-gradient(circle at 30% 80%, #111 0%, transparent 40%),
+              radial-gradient(circle at 70% 70%, #ffffff08 0%, transparent 30%);
+  background-color: #000;
+  background-size: 200% 200%;
+  animation: bgShift 15s ease-in-out infinite alternate;
   text-align: center;
   padding: 0 20px;
-  margin-top: 40px; /* Prevents hero from hiding under the fixed banner */
+  overflow: hidden;
+  position: relative;
 }
 
+/* Subtle movement for the psychedelic feel */
+@keyframes bgShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Ensure the title pops against the dark gradient */
 .hero-title {
   font-size: clamp(3.5rem, 12vw, 7rem);
   font-weight: 900;
   letter-spacing: -3px;
   line-height: 0.9;
-}
-
-.accent {
-  color: #ff3e3e;
+  color: #fff;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .main-content {
+  position: relative;
+  z-index: 60; 
   padding: 60px 20px;
   background-color: #000;
 }
 
-/* --- 4. LICENSING & BUTTON ANIMATIONS --- */
+/* --- 4. DARK LIQUID GLASS & VINYL EFFECTS --- */
 
-.licensing-section {
-  padding: 100px 20px;
-  background-color: #000;
+.liquid-container {
+  filter: url('#liquid'); /* Trippy distortion remains */
 }
 
-.license-card {
-  background: white;
-  color: black;
-  padding: 45px 30px;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s ease;
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
-.license-card.popular-card {
-  background: black;
-  color: white;
-  border: 1px solid #333;
-  transform: scale(1.05);
-  z-index: 10;
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* High-End Button Animation */
+/* Molten Dark Glass Blobs */
+.glass-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px); /* Heavier blur for darker shadows */
+  animation: blobFloat 25s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.blob-dark-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255, 62, 62, 0.08) 0%, transparent 70%); /* Subtle red glow */
+  top: -20%;
+  left: -10%;
+}
+
+.blob-dark-2 {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%); /* Very faint white highlight */
+  bottom: -30%;
+  right: -5%;
+}
+
+@keyframes blobFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 100px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Vinyl Shine Animation */
+.vinyl-shine {
+  background: linear-gradient(
+    45deg, 
+    transparent 40%, 
+    rgba(255,255,255,0.05) 45%, /* Subdued shine for dark theme */
+    rgba(255,255,255,0.05) 55%, 
+    transparent 60%
+  );
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* --- 5. LICENSING & BUTTONS --- */
+
 .license-btn {
-  background: black;
+  background: #111; /* Darker button base */
   color: white;
-  border: 2px solid black;
+  border: 2px solid #222;
   padding: 14px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin-top: auto;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .license-btn:hover {
   background: #ff3e3e;
   border-color: #ff3e3e;
-  color: white;
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(255, 62, 62, 0.4);
 }
@@ -124,44 +192,4 @@ html {
   background: transparent;
   color: white;
   border-color: white;
-  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.15);
-}
-
-/* --- 5. MODALS & ANIMATIONS --- */
-
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.modal-content {
-  background: #0a0a0a;
-  border: 1px solid #222;
-  padding: 50px;
-  max-width: 700px;
-  width: 90%;
-  max-height: 85vh;
-  overflow-y: auto;
-  border-radius: 8px;
-  animation: slideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-/* Liquid Shine Animation */
-@keyframes liquid-shine {
-  0% { transform: translateX(-100%); }
-  50%, 100% { transform: translateX(100%); }
-}
-
-.animate-liquid-shine {
-  animation: liquid-shine 5s infinite linear;
 }
