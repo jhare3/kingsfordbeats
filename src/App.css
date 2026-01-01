@@ -1,0 +1,167 @@
+/* --- 1. GLOBAL & SCROLL RESET --- */
+html {
+  scroll-behavior: smooth;
+  /* (Banner 40px + Scrolled Navbar 70px) = 110px offset for anchors */
+  scroll-padding-top: 110px; 
+}
+
+/* --- 2. HEADER STACK (BANNER & NAV) --- */
+
+/* Liquid Glass Banner */
+.urgency-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 1100; /* Stays above everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base Navbar */
+/* Ensure the Navbar starts below the 40px Urgency Banner */
+.navbar {
+  position: fixed;
+  top: 40px; 
+  left: 0;
+  height: 80px;
+}
+
+/* Update this specific block in your App.css */
+.navbar.scrolled {
+  /* Change from top: 0 to top: 40px to stay below the banner */
+  top: 40px; 
+  height: 70px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- 3. HERO & MAIN CONTENT --- */
+
+.hero {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  text-align: center;
+  padding: 0 20px;
+  margin-top: 40px; /* Prevents hero from hiding under the fixed banner */
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 0.9;
+}
+
+.accent {
+  color: #ff3e3e;
+}
+
+.main-content {
+  padding: 60px 20px;
+  background-color: #000;
+}
+
+/* --- 4. LICENSING & BUTTON ANIMATIONS --- */
+
+.licensing-section {
+  padding: 100px 20px;
+  background-color: #000;
+}
+
+.license-card {
+  background: white;
+  color: black;
+  padding: 45px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+}
+
+.license-card.popular-card {
+  background: black;
+  color: white;
+  border: 1px solid #333;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* High-End Button Animation */
+.license-btn {
+  background: black;
+  color: white;
+  border: 2px solid black;
+  padding: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: auto;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.license-btn:hover {
+  background: #ff3e3e;
+  border-color: #ff3e3e;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(255, 62, 62, 0.4);
+}
+
+.popular-card .license-btn {
+  background: white;
+  color: black;
+  border: 2px solid white;
+}
+
+.popular-card .license-btn:hover {
+  background: transparent;
+  color: white;
+  border-color: white;
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.15);
+}
+
+/* --- 5. MODALS & ANIMATIONS --- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  padding: 50px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  animation: slideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* Liquid Shine Animation */
+@keyframes liquid-shine {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(100%); }
+}
+
+.animate-liquid-shine {
+  animation: liquid-shine 5s infinite linear;
+}

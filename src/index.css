@@ -1,0 +1,16 @@
+/* index.css */
+
+
+@import "tailwindcss"; /* */
+
+
+:root {
+  --brand-gold: #d4af37;
+  --bg-dark: #050505;
+}
+body {
+  background-color: var(--bg-dark);
+  color: white;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
