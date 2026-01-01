@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ContractModal from './ContractModal'; // Import the dedicated modal component
 
 const Licensing = () => {
   const [selectedLicense, setSelectedLicense] = useState(null);
@@ -8,58 +9,58 @@ const Licensing = () => {
     {
       title: "MP3 Lease (tagged)",
       price: "$30.00",
-      description: "High-Quality tagged MP3 file ",
+      description: "High-Quality tagged MP3 file",
       deals: "BUY 2 TRACKS, GET 10 FREE!",
       popular: false,
       contractDetails: {
-        delivery: "High-quality Tagged MP3 ",
-        rights: "Non-exclusive, non-transferable license ",
-        usage: "Unlimited terrestrial/satellite radio and sync for video up to 5 mins ",
-        ownership: "Producer remains sole owner of the Beat ",
-        publishing: "50% Licensor / 50% Licensee split "
+        delivery: "High-quality Tagged MP3",
+        rights: "Non-exclusive, non-transferable license",
+        usage: "Unlimited terrestrial/satellite radio and sync for video up to 5 mins",
+        ownership: "Producer remains sole owner of the Beat",
+        publishing: "50% Licensor / 50% Licensee split"
       }
     },
     {
       title: "WAV Lease (untagged)",
       price: "$60.00",
-      description: "High-Quality tagged MP3 + High-Quality untagged WAV ",
+      description: "High-Quality tagged MP3 + High-Quality untagged WAV",
       deals: "BUY 2 TRACKS, GET 10 FREE!",
       popular: true,
       contractDetails: {
-        delivery: "High-quality WAV and MP3 ",
-        rights: "Non-exclusive, non-transferable license ",
-        usage: "Unlimited monetized audio/video streams ",
-        ownership: "Producer remains sole owner ",
-        publishing: "50% Licensor / 50% Licensee split "
+        delivery: "High-quality WAV and MP3",
+        rights: "Non-exclusive, non-transferable license",
+        usage: "Unlimited monetized audio/video streams",
+        ownership: "Producer remains sole owner",
+        publishing: "50% Licensor / 50% Licensee split"
       }
     },
     {
       title: "Stems Lease",
       price: "$150.00",
-      description: "High-Quality WAV, MP3, and Track Stems ",
+      description: "High-Quality WAV, MP3, and Track Stems",
       deals: "BUY 2 TRACKS, GET 10 FREE!",
       popular: false,
       contractDetails: {
-        delivery: "High-quality WAV, MP3, and Track Stems ",
-        rights: "Non-exclusive license; Includes Spotify promo and consultation ",
-        usage: "Unlimited for-profit and non-profit live performances ",
-        ownership: "Master recording is a 'work made for hire' for Artist ",
-        publishing: "50% Licensor / 50% Licensee split "
+        delivery: "High-quality WAV, MP3, and Track Stems",
+        rights: "Non-exclusive license; Includes Spotify promo and consultation",
+        usage: "Unlimited for-profit and non-profit live performances",
+        ownership: "Master recording is a 'work made for hire' for Artist",
+        publishing: "50% Licensor / 50% Licensee split"
       }
     },
     {
       title: "Exclusive License",
       price: "$500.00",
-      description: "Complete ownership of the instrumental ",
+      description: "Complete ownership of the instrumental",
       deals: "BUY 1 TRACK, GET 1 FREE!",
       popular: false,
       contractDetails: {
-        delivery: "Master recording of 'Preview Track Only' ",
-        term: "Perpetuity (Forever) throughout the Universe ",
-        rights: "Sole and exclusive right to manufacture and sell the Master ",
-        usage: "Public performance and inclusion in any audio-visual production ",
-        ownership: "Master is a 'work made for hire' for the Artist ",
-        publishing: "50% Licensor / 50% Licensee split "
+        delivery: "Master recording of 'Preview Track Only'",
+        term: "Perpetuity (Forever) throughout the Universe",
+        rights: "Sole and exclusive right to manufacture and sell the Master",
+        usage: "Public performance and inclusion in any audio-visual production",
+        ownership: "Master is a 'work made for hire' for the Artist",
+        publishing: "50% Licensor / 50% Licensee split"
       }
     }
   ];
@@ -67,11 +68,14 @@ const Licensing = () => {
   const openModal = (license) => {
     setSelectedLicense(license);
     setIsModalOpen(true);
+    // Prevent background scrolling when modal is active
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedLicense(null);
+    // Restore scrolling when modal is closed
     document.body.style.overflow = 'unset';
   };
 
@@ -89,7 +93,7 @@ const Licensing = () => {
             ${license.popular ? 'bg-black text-white border-red-600 scale-105 z-10 shadow-2xl' : 'bg-white text-black border-transparent'}`}
           >
             {license.popular && (
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1">
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1 text-white">
                 ★ Popular
               </div>
             )}
@@ -113,25 +117,12 @@ const Licensing = () => {
         ))}
       </div>
 
-      {isModalOpen && selectedLicense && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content text-left" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeModal}>&times;</button>
-            <h2 className="modal-title">{selectedLicense.title} Details</h2>
-            <div className="grid gap-6">
-              {Object.entries(selectedLicense.contractDetails).map(([key, value]) => (
-                <div key={key}>
-                  <label className="block text-red-600 text-[10px] font-black uppercase tracking-widest mb-1">{key}</label>
-                  <p className="text-sm text-zinc-300 leading-relaxed">{value}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-10 text-[10px] text-zinc-600 italic uppercase">
-              * This is a legal summary. Full terms apply upon checkout.
-            </p>
-          </div>
-        </div>
-      )}
+      {/* Using the separate ContractModal component for cleaner code */}
+      <ContractModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        license={selectedLicense} 
+      />
     </section>
   );
 };

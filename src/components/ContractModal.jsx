@@ -22,3 +22,5 @@ const ContractModal = ({ isOpen, onClose, license }) => {
     </div>
   );
 };
+
+export default ContractModal;
