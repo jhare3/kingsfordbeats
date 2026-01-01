@@ -16,7 +16,7 @@ const ContractModal = ({ isOpen, onClose, license }) => {
           <p><strong>Publishing:</strong> {license.contractDetails.publishing}</p>
         </div>
         <p className="legal-disclaimer">
-          * This is a summary. Full legal terms apply upon purchase[cite: 63, 172].
+          * This is a summary. Full legal terms apply upon purchase. *
         </p>
       </div>
     </div>

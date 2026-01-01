@@ -54,7 +54,7 @@ const Hero = () => {
           }}
         />
         {/* Dark tint overlay for readability & depth */}
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px]" />
       </div>
 
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10">
@@ -78,13 +78,36 @@ const Hero = () => {
               Don't blend in, <span className="font-black text-white">Standout</span>
             </span>
 */} 
-            {/* The Button (kept your existing logic) */}
-            <button 
-              className="mt-10 pointer-events-auto bg-white text-black py-4 px-10 font-extrabold uppercase tracking-widest transition-all duration-300 shadow-xl border-2 border-black rounded-full hover:bg-green-500 hover:border-white hover:text-white transform hover:scale-105"
-              onClick={scrollToPlayer}
-            >
-              Browse Beats
-            </button>
+            <div className="flex flex-col items-center justify-center space-y-2">
+  
+  {/* Wrap the button in the shimmer container */}
+  <div className="border-shimmer-wrapper group">
+    <motion.button 
+      className="pointer-events-auto bg-white text-black py-4 px-10 font-extrabold 
+                 uppercase tracking-widest shadow-xl 
+                 rounded-full relative overflow-hidden border-none" 
+      onClick={scrollToPlayer}
+      whileHover={{ 
+        scale: 1.05,
+        backgroundColor: "#92c957",
+        color: "#ffffff",
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {/* Default Gray Shimmer (Inside) */}
+      <span className="absolute inset-0 -translate-x-full group-hover:hidden animate-shimmer 
+                       bg-gradient-to-r from-transparent via-gray-900/30 to-transparent z-0" 
+      />
+
+      {/* White Shimmer (Inside - Visible only on Hover) */}
+      <span className="absolute inset-0 -translate-x-full hidden group-hover:block group-hover:animate-shimmer 
+                       bg-gradient-to-r from-transparent via-white/40 to-transparent z-0" 
+      />
+      
+      <span className="relative z-10">Browse Beats</span>
+    </motion.button>
+  </div>
+</div>
           </div>
         </div>
 

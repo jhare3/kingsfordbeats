@@ -147,3 +147,74 @@ body {
   padding: 40px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite; 
+}
+
+.group:hover .group-hover\:animate-shimmer {
+  animation: shimmer 3s infinite;
+}
+
+/* Explicitly ensure the hero button has no border shadow artifacts */
+.hero button {
+  border: none !important;
+  outline: none;
+  isolation: isolate; 
+}
+
+/* App.css */
+
+/* Keyframes for the rotating border light */
+@keyframes border-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.border-shimmer-wrapper {
+  position: relative;
+  border-radius: 9999px; /* Matches rounded-full */
+  padding: 2px; /* This determines the thickness of the shimmer border */
+  display: inline-block;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.border-shimmer-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -150%; /* Larger than button to cover rotation corners */
+  /* Conic gradient creates the 'streak' of light */
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(146, 201, 87, 0.5) 45%, /* Your green color #92c957 */
+    #92c957 50%,
+    rgba(146, 201, 87, 0.5) 55%,
+    transparent 75%,
+    transparent 100%
+  );
+  animation: border-rotate 4s linear infinite;
+  z-index: -1;
+}
+
+/* Optional: change the shimmer color to white on hover */
+.group:hover .border-shimmer-wrapper::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(255, 255, 255, 0.5) 45%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0.5) 55%,
+    transparent 75%,
+    transparent 100%
+  );
+  animation-duration: 2s; /* Speeds up on hover */
+}
