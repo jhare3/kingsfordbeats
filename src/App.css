@@ -10,9 +10,15 @@ body {
   margin: 0;
   padding: 0;
   background-color: #000;
+  overflow-x: hidden; /* Prevent horizontal scroll from flying records */
 }
 
-/* --- 2. HEADER STACK --- */
+/* Prevent scrolling when mobile menu is open */
+body:has(.opacity-100) {
+  overflow: hidden;
+}
+
+/* --- 2. HEADER STACK (Urgency Banner & Navbar) --- */
 .urgency-banner {
   position: fixed;
   top: 0;
@@ -42,32 +48,51 @@ body {
   z-index: 1000;
   transition: all 0.4s ease;
   background: transparent;
+  -webkit-backdrop-filter: blur(0px);
+  will-change: background, backdrop-filter;
 }
 
 .navbar.scrolled {
-  background: rgba(5, 5, 5, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(5, 5, 5, 0.8) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   height: 70px;
+}
+
+/* Touch feedback for mobile buttons */
+.navbar button:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
 }
 
 /* --- 3. HERO & PSYCHEDELIC ANIMATIONS --- */
 .hero {
   height: 100vh;
+  height: 100dvh; /* Fixes iOS Safari address bar jump */
   width: 100%;
   position: relative;
   overflow: hidden;
   background-color: #000;
+}
+
+.sticky-hero-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  z-index: 10;
 }
 
 @keyframes psyched-pan {
   0% { transform: scale(1.1) rotate(0deg) translate(0, 0); filter: hue-rotate(0deg); }
-  33% { transform: scale(1.2) rotate(2deg) translate(15px, -15px); filter: hue-rotate(10deg); }
-  66% { transform: scale(1.15) rotate(-2deg) translate(-15px, 15px); filter: hue-rotate(-10deg); }
+  33% { transform: scale(1.15) rotate(1deg) translate(5px, -5px); filter: hue-rotate(5deg); }
+  66% { transform: scale(1.12) rotate(-1deg) translate(-5px, 5px); filter: hue-rotate(-5deg); }
   100% { transform: scale(1.1) rotate(0deg) translate(0, 0); filter: hue-rotate(0deg); }
 }
 
@@ -87,7 +112,7 @@ body {
   z-index: 10;
 }
 
-/* --- 4. MAIN CONTENT & EFFECTS --- */
+/* --- 4. MAIN CONTENT & VINYL EFFECTS --- */
 .main-content {
   position: relative;
   z-index: 60; 
@@ -150,38 +175,33 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* --- 6. SHIMMER & BORDER EFFECTS --- */
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+@keyframes border-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-shimmer {
   animation: shimmer 3s infinite; 
 }
 
-.group:hover .group-hover\:animate-shimmer {
-  animation: shimmer 3s infinite;
-}
-
-/* Explicitly ensure the hero button has no border shadow artifacts */
+/* Hero Button Base */
 .hero button {
   border: none !important;
   outline: none;
   isolation: isolate; 
-}
-
-/* App.css */
-
-/* Keyframes for the rotating border light */
-@keyframes border-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  -webkit-tap-highlight-color: transparent;
 }
 
 .border-shimmer-wrapper {
   position: relative;
-  border-radius: 9999px; /* Matches rounded-full */
-  padding: 2px; /* This determines the thickness of the shimmer border */
+  border-radius: 9999px;
+  padding: 2px;
   display: inline-block;
   overflow: hidden;
   isolation: isolate;
@@ -190,13 +210,12 @@ body {
 .border-shimmer-wrapper::before {
   content: '';
   position: absolute;
-  inset: -150%; /* Larger than button to cover rotation corners */
-  /* Conic gradient creates the 'streak' of light */
+  inset: -150%; 
   background: conic-gradient(
     from 0deg,
     transparent 0%,
     transparent 25%,
-    rgba(146, 201, 87, 0.5) 45%, /* Your green color #92c957 */
+    rgba(146, 201, 87, 0.5) 45%, 
     #92c957 50%,
     rgba(146, 201, 87, 0.5) 55%,
     transparent 75%,
@@ -206,18 +225,36 @@ body {
   z-index: -1;
 }
 
-/* Optional: change the shimmer color to white on hover */
-.group:hover .border-shimmer-wrapper::before {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 25%,
-    rgba(255, 255, 255, 0.5) 45%,
-    #ffffff 50%,
-    rgba(255, 255, 255, 0.5) 55%,
-    transparent 75%,
-    transparent 100%
-  );
-  animation-duration: 2s; /* Speeds up on hover */
+/* Desktop Hover Effects */
+@media (min-width: 768px) {
+  .group:hover .border-shimmer-wrapper::before {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(255, 255, 255, 0.5) 45%,
+      #ffffff 50%,
+      rgba(255, 255, 255, 0.5) 55%,
+      transparent 75%,
+      transparent 100%
+    );
+    animation-duration: 2s;
+  }
 }
 
+/* --- 7. MOBILE MENU ANIMATIONS --- */
+@keyframes slideInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.opacity-100 ul li {
+  animation: slideInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.opacity-100 ul li:nth-child(1) { animation-delay: 0.1s; }
+.opacity-100 ul li:nth-child(2) { animation-delay: 0.2s; }
+.opacity-100 ul li:nth-child(3) { animation-delay: 0.3s; }
+.opacity-100 ul li:nth-child(4) { animation-delay: 0.4s; }
+.opacity-100 ul li:nth-child(5) { animation-delay: 0.5s; }
