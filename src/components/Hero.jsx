@@ -82,6 +82,19 @@ const Hero = () => {
   
   {/* Wrap the button in the shimmer container */}
   <div className="border-shimmer-wrapper group">
+    <div className="flex flex-col items-center justify-center space-y-2">
+  
+  {/* The motion wrapper controls the entry animation for the entire button unit */}
+  <motion.div 
+    className="border-shimmer-wrapper group"
+    initial={{ opacity: 0, y: 150 }} // Starts 150px lower for a more dramatic rise
+    animate={{ opacity: 1, y: 0 }}   // Rises to its CSS-defined center position
+    transition={{ 
+      duration: 1.8,                // Increased duration for a "slow" rise
+      delay: 0.2,                   // Slight delay so the background loads first
+      ease: [0.22, 1, 0.36, 1]      // "Quintic" ease-out: smooth deceleration at the top
+    }}
+  >
     <motion.button 
       className="pointer-events-auto bg-white text-black py-4 px-10 font-extrabold 
                  uppercase tracking-widest shadow-xl 
@@ -106,6 +119,8 @@ const Hero = () => {
       
       <span className="relative z-10">Browse Beats</span>
     </motion.button>
+  </motion.div>
+</div>
   </div>
 </div>
           </div>

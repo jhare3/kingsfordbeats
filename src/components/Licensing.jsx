@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import ContractModal from './ContractModal'; // Import the dedicated modal component
+import { motion } from 'framer-motion'; // Added Framer Motion import
+import ContractModal from './ContractModal';
 
 const Licensing = () => {
   const [selectedLicense, setSelectedLicense] = useState(null);
@@ -51,7 +52,7 @@ const Licensing = () => {
     {
       title: "Exclusive License",
       price: "$500.00",
-      description: "Complete ownership of the instrumental",
+      description: "High-Quality WAV, MP3, and Track Stems",
       deals: "BUY 1 TRACK, GET 1 FREE!",
       popular: false,
       contractDetails: {
@@ -91,39 +92,51 @@ const Licensing = () => {
       </div>
 
       <div className="relative z-10">
-        <h2 className="text-4xl font-black uppercase tracking-widest text-black mb-16">
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl font-black uppercase tracking-widest text-black mb-16"
+        >
           Licensing <span className="text-red-600">Options</span>
-        </h2>
+        </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {licenses.map((license, index) => (
-            <div 
-              key={index} 
-              className={`flex flex-col p-10 relative border-t-4 transition-all duration-300 hover:-translate-y-2 shadow-2xl
-              ${license.popular ? 'bg-black text-white border-red-600 scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-black border-black'}`}
-            >
-              {license.popular && (
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1 text-white">
-                  ★ Popular
-                </div>
-              )}
-              <h3 className="text-xl font-extrabold mb-4">{license.title}</h3>
-              <div className="text-5xl font-black mb-6">{license.price}</div>
-              <p className="text-sm font-semibold mb-10 min-h-[40px] leading-snug">{license.description}</p>
-              
-              <button 
-                className={`mt-auto py-4 font-black uppercase tracking-widest text-xs transition-all border-2 
-                ${license.popular ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'bg-black text-white border-black hover:bg-red-600 hover:border-red-600'}`}
-                onClick={() => openModal(license)}
-              >
-                Read License
-              </button>
+  <motion.div 
+    key={index}
+    // ... animation props remain same
+    className="h-full"
+  >
+    <div 
+      className={`flex flex-col p-10 h-full relative border-t-4 transition-all duration-300 hover:-translate-y-2 shadow-2xl rounded-2xl overflow-hidden
+      ${license.popular ? 'bg-black text-white border-red-600 scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-black border-black'}`}
+    >
+      {/* License Content */}
+      {license.popular && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1 text-white">
+          ★ Popular
+        </div>
+      )}
+                <h3 className="text-xl font-extrabold mb-4">{license.title}</h3>
+                <div className="text-5xl font-black mb-6">{license.price}</div>
+                <p className="text-sm font-semibold mb-10 min-h-[40px] leading-snug">{license.description}</p>
+                
+                <button 
+                  className={`mt-auto py-4 font-black uppercase tracking-widest text-xs transition-all border-2 
+                  ${license.popular ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'bg-black text-white border-black hover:bg-red-600 hover:border-red-600'}`}
+                  onClick={() => openModal(license)}
+                >
+                  Read License
+                </button>
 
-              <div className="mt-8 border-t border-current pt-4 opacity-80 uppercase">
-                <small className="text-[9px] font-bold">Bulk deals:</small>
-                <p className="text-[11px] font-black mt-1">{license.deals}</p>
+                <div className="mt-8 border-t border-current pt-4 opacity-80 uppercase">
+                  <small className="text-[9px] font-bold">Bulk deals:</small>
+                  <p className="text-[11px] font-black mt-1">{license.deals}</p>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
