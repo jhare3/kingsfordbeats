@@ -18,7 +18,7 @@ const Navbar = () => {
       flex items-center w-full transition-all duration-500 ease-in-out z-[1000]`}
     >
       <div className="max-w-[1200px] w-full mx-auto flex justify-between items-center px-8">
-        <div className="font-black text-2xl tracking-tighter">
+        <div className="text-3xl tracking-normal">
           KINGSFORD<span className="text-red-600 uppercase">BEATS</span>
         </div>
         
@@ -47,10 +47,10 @@ const Navbar = () => {
 
         <div className="nav-cta">
           <button 
-            className="bg-transparent text-white border border-white py-2 px-5 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-all hover:bg-white hover:text-black"
-            onClick={() => document.getElementById('licensing').scrollIntoView({behavior: 'smooth'})}
-          >
-            Price List
+              className="bg-transparent text-white border-2 border-white py-2 px-6 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-all hover:bg-white hover:text-black rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
+              onClick={() => document.getElementById('licensing').scrollIntoView({behavior: 'smooth'})}
+            >
+              Price List
           </button>
         </div>
       </div>

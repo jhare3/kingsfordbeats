@@ -1,8 +1,21 @@
-/* index.css */
+/* 1. External font imports MUST be first */
+@import url('https://fonts.googleapis.com/css2?family=Gladolia&display=swap');
 
+/* 2. Tailwind import second */
+@import "tailwindcss";
 
-@import "tailwindcss"; /* */
+/* 3. Theme configuration third */
+@theme {
+  --font-groovy: "Gladolia", sans-serif;
+}
 
+@layer base {
+  @font-face {
+    font-family: 'Gladolia';
+    src: url('./fonts/Gladolia.woff2') format('woff2'); /* Ensure path is correct */
+    font-weight: normal;
+    font-style: normal;
+  }
 
 :root {
   --brand-gold: #ffffff;
@@ -13,5 +26,7 @@ body {
   color: rgb(246, 246, 246);
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+}
+
 }
 

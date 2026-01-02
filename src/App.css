@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* --- 1. GLOBAL & SCROLL RESET --- */
 html {
   scroll-behavior: smooth;
@@ -218,3 +220,4 @@ body {
   );
   animation-duration: 2s; /* Speeds up on hover */
 }
+
