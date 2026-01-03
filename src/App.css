@@ -13,10 +13,7 @@ body {
   overflow-x: hidden; /* Prevent horizontal scroll from flying records */
 }
 
-/* Prevent scrolling when mobile menu is open */
-body:has(.opacity-100) {
-  overflow: hidden;
-}
+
 
 /* --- 2. HEADER STACK (Urgency Banner & Navbar) --- */
 .urgency-banner {
