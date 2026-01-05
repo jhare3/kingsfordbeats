@@ -5,22 +5,20 @@ const About = () => {
     <section id="about" className="relative py-24 bg-black overflow-hidden">
       
       {/* Background Image Layer */}
-        <div className="absolute inset-0 z-0 flex pointer-events-none">
+      <div className="absolute inset-0 z-0 flex flex-col md:flex-row pointer-events-none">
         <div 
-            className="w-1/2 h-full bg-cover bg-center opacity-20" 
-            style={{ 
+          className="w-full h-1/2 md:w-1/2 md:h-full bg-cover bg-center opacity-30" 
+          style={{ 
             backgroundImage: "url('/kingsfordbeats_LOGO.png')",
-            minHeight: '100%' 
-            }}
+          }}
         />
         <div 
-            className="w-1/2 h-full bg-cover bg-center opacity-0.5" 
-            style={{ 
+          className="w-full h-1/2 md:w-1/2 md:h-full bg-cover bg-center opacity-0.5" 
+          style={{ 
             backgroundImage: "url('/kingsfordbeats_LOGO.png')",
-            minHeight: '100%' 
-            }}
+          }}
         />
-        </div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-16">
@@ -32,7 +30,7 @@ const About = () => {
                 Never Perfect <br /><span className="text-red-600">Always Art</span>
               </h2>
               <div className="text-gray-400 text-lg leading-relaxed max-w-md italic">
-                <p>"Don't worry about Perfection,</p>
+                <p>Don't worry about Perfection,</p>
                 <p>Make art to feed the soul.</p>
                 <br />
                 <p>Every note is a story,</p>
@@ -41,7 +39,7 @@ const About = () => {
                 <p>Every beat a journey.</p>
                 <br />
                 <p>Don't worry about Perception,</p>
-                <p>Make art to feed the soul."</p>
+                <p>Make art to feed the soul.</p>
               </div>
             </div>
             {/* Aesthetic Background Element */}
@@ -53,7 +51,7 @@ const About = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="h-px w-12 bg-red-600"></div>
-                <span className="text-red-600 font-bold uppercase tracking-[0.3em] text-sm">Who is Kingsford?</span>
+                <span className="text-red-600 font-bold uppercase tracking-[0.3em] text-sm">Why Kingsford?</span>
               </div>
               
               <h3 className="text-3xl font-bold text-white uppercase tracking-tight">
@@ -63,7 +61,7 @@ const About = () => {
               <div className="space-y-4 text-gray-300 font-light leading-relaxed">
                 <p>
                   I believe the best music lives in the imperfections. 
-                  In a world of AI and clinical, programmed loops, I chase the authentically human* frequencies that make a listener feel something real.
+                  In a world of AI and clinical, programmed loops, I chase the authentically human frequencies that make a listener feel something real.
                   Listeners' and artists' expectations are evolving, but they will always crave beats that breathe life, soul, and raw emotion.
                 </p>
                 <p>
