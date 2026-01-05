@@ -38,9 +38,9 @@ const Navbar = () => {
         <div className="hidden md:block">
           <button 
               className="bg-transparent text-white border-2 border-white py-2 px-6 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-all hover:bg-white hover:text-black rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
-              onClick={() => document.getElementById('licensing').scrollIntoView({behavior: 'smooth'})}
+              onClick={() => document.getElementById('about').scrollIntoView({behavior: 'smooth'})}
             >
-              Price List
+              Why Kingsford?
           </button>
         </div>
 
@@ -76,9 +76,9 @@ const Navbar = () => {
             <li className="w-full pt-4">
               <button 
                 className="w-full bg-red-600 text-white py-4 text-xs font-bold uppercase tracking-widest"
-                onClick={() => { closeMenu(); document.getElementById('licensing').scrollIntoView({behavior: 'smooth'}) }}
+                onClick={() => { closeMenu(); document.getElementById('about').scrollIntoView({behavior: 'smooth'}) }}
               >
-                View Price List
+                Why Kingsford?
               </button>
             </li>
           </ul>

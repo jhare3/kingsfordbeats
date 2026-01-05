@@ -43,7 +43,7 @@ const LeadPopup = () => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-white text-black max-w-md w-full p-8 rounded-none relative border-[4px] border-red-600 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.3)]">
+      <div className="bg-white text-black max-w-md w-full p-8 rounded-none relative border-[1px] border-red-600 ]">
         
         <button 
           onClick={() => setIsVisible(false)}
@@ -56,7 +56,7 @@ const LeadPopup = () => {
           {status === "SUCCESS" ? (
             <div className="py-8">
               <h2 className="text-2xl font-black uppercase mb-2">Beats will be in your inbox asap!</h2>
-              <p className="font-bold text-red-600">Yourfree beats are on the way.</p>
+              <p className="font-bold text-red-600">Your free beats are on the way.</p>
             </div>
           ) : (
             <>

@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import PromoBanner from './components/PromoBanner'
 import BeatPlayer from './components/BeatPlayer'
 import Licensing from './components/Licensing'
+import About from './components/About' // 1. Add this import
 import Contact from './components/Contact' 
 import LeadPopup from './components/LeadPopup' 
 import './App.css'
@@ -29,6 +30,7 @@ function App() {
       
       {/* 5. Informational & Interaction Sections */}
       <Licensing />
+      <About />
       <Contact /> 
 
       {/* 6. Footer */}

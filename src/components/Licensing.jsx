@@ -1,6 +1,34 @@
+// src/components/Licensing.jsx
 import React, { useState } from 'react';
-import { motion } from 'framer-motion'; // Added Framer Motion import
+import { motion } from 'framer-motion';
 import ContractModal from './ContractModal';
+
+// Animation variants for the parent container
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Delay between each card's arrival,
+    },
+  },
+};
+
+// Animation variants for each individual card
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30 // Start 30px lower
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut"
+    }
+  },
+};
 
 const Licensing = () => {
   const [selectedLicense, setSelectedLicense] = useState(null);
@@ -102,23 +130,29 @@ const Licensing = () => {
           Licensing <span className="text-red-600">Options</span>
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {/* Animated Grid Container */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
+        >
           {licenses.map((license, index) => (
-  <motion.div 
-    key={index}
-    // ... animation props remain same
-    className="h-full"
-  >
-    <div 
-      className={`flex flex-col p-10 h-full relative border-t-4 transition-all duration-300 hover:-translate-y-2 shadow-2xl rounded-2xl overflow-hidden
-      ${license.popular ? 'bg-black text-white border-red-600 scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-black border-black'}`}
-    >
-      {/* License Content */}
-      {license.popular && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1 text-white">
-          ★ Popular
-        </div>
-      )}
+            <motion.div 
+              key={index}
+              variants={cardVariants}
+              className="h-full"
+            >
+              <div 
+                className={`flex flex-col p-10 h-full relative border-t-4 transition-all duration-300 hover:-translate-y-2 shadow-2xl rounded-2xl overflow-hidden
+                ${license.popular ? 'bg-black text-white border-red-600 scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-black border-black'}`}
+              >
+                {license.popular && (
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1 text-white">
+                    ★ Popular
+                  </div>
+                )}
                 <h3 className="text-xl font-extrabold mb-4">{license.title}</h3>
                 <div className="text-5xl font-black mb-6">{license.price}</div>
                 <p className="text-sm font-semibold mb-10 min-h-[40px] leading-snug">{license.description}</p>
@@ -138,7 +172,7 @@ const Licensing = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <ContractModal 
