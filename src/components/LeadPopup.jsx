@@ -61,10 +61,10 @@ const LeadPopup = () => {
           ) : (
             <>
               <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">
-                Wait!
+                Hol' Up!
               </h2>
               <p className="text-lg font-bold mb-6 italic">
-                Want to unlock <span className="text-red-600">5 FREE BEATS</span>?
+                Can I send you <span className="text-red-600">free beats</span> sometime??
               </p>
               
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -79,7 +79,7 @@ const LeadPopup = () => {
                   type="submit"
                   className="w-full bg-black text-white py-4 font-black uppercase tracking-widest hover:bg-red-600 transition-colors"
                 >
-                  Send Me The Beats
+                  Send The Beats bro!
                 </button>
                 {status === "ERROR" && (
                   <p className="text-red-600 text-xs font-bold mt-2">Oops! Something went wrong. Try again.</p>
