@@ -92,7 +92,7 @@ const Contact = () => {
           <div>
             <h3 className="text-xl font-black uppercase tracking-widest mb-2">Connect</h3>
             <p className="text-sm leading-relaxed font-medium max-w-sm">
-              I'm most active on IG. Follow for daily studio updates, new beat drops, and behind-the-scenes content.
+              I'm most active on IG. Follow for studio updates, new beat drops, and behind-the-scenes content.
             </p>
           </div>
 

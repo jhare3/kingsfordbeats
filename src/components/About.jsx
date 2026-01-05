@@ -28,8 +28,8 @@ const About = () => {
           {/* Left Side: Visual/Text */}
           <div className="w-full md:w-1/2 relative">
             <div className="relative z-10 border-l-4 border-white/20 pl-8">
-              <h2 className="text-5xl md:text-7xl font-black text-white uppercase leading-none mb-6 tracking-tighter">
-                My<span className="text-red-600">Vision</span>
+              <h2 className="text-2xl md:text-3xl font-black text-white uppercase leading-none mb-6 tracking-tighter">
+                Never Perfect <br /><span className="text-red-600">Always Art</span>
               </h2>
               <div className="text-gray-400 text-lg leading-relaxed max-w-md italic">
                 <p>"Don't worry about Perfection,</p>
@@ -38,7 +38,7 @@ const About = () => {
                 <p>Every note is a story,</p>
                 <p>Every sample a memory.</p>
                 <p>Every loop is a heartbeat,</p>
-                <p>Every beat a journey</p>
+                <p>Every beat a journey.</p>
                 <br />
                 <p>Don't worry about Perception,</p>
                 <p>Make art to feed the soul."</p>
