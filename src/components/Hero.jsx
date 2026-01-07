@@ -50,7 +50,7 @@ const Hero = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 animate-psyched-pan"
           style={{ 
-            backgroundImage: `url('https://coolbackgrounds.imgix.net/5GbV8Si50TKkaulnxGwBa/f52a3d7e4d095c0ced0679c79f7d12f6/white-trianglify.jpg?w=3840&q=60&auto=format,compress')`,
+            backgroundImage: `url('https://media.newyorker.com/photos/59095ec3c14b3c606c1058af/master/w_2240,c_limit/Brody-Coltrane-Free-Jazz.jpg')`,
           }}
         />
         {/* Dark tint overlay for readability & depth */}
