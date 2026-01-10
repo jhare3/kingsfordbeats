@@ -75,11 +75,11 @@ const About = () => {
               <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
                 <div>
                   <div className="text-4xl font-black text-white uppercase hover:text-red-600">100%</div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Human Made</div>
+                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 hover:text-red-600">Human Made</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-black text-white uppercase">Unique</div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Sonic DNA</div>
+                  <div className="text-4xl font-black text-white uppercase hover:text-red-600">Unique</div>
+                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 hover:text-red-600">Sonic DNA</div>
                 </div>
               </div>
             </div>

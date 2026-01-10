@@ -24,7 +24,7 @@ const UrgencyBanner = () => {
   const format = (num) => String(num).padStart(2, '0');
 
   const scrollToDeals = () => {
-    document.getElementById('licensing')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('beat-store')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -45,7 +45,7 @@ const UrgencyBanner = () => {
         <div className="animate-liquid-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"></div>
       </div>
 
-      <span className="relative z-10 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold">
+      <span className="relative z-10 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold hover:text-red-600">
         Limited Time Bulk Deal: <span className="text-red-500">Buy 2 Get 10 Free</span> ends in
       </span>
       

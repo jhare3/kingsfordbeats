@@ -89,7 +89,7 @@ const LeadPopup = () => {
           )}
           
           <p className="text-[10px] mt-4 opacity-50 uppercase font-bold">
-            No spam. Just heat. Unsubscribe anytime.
+            No spam. Just heat. Unsubscribe anytime. <br></br>Litterally all I do is send beats.
           </p>
         </div>
       </div>
