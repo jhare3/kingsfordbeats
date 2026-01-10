@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 const LeadPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [status, setStatus] = useState(""); // To track form submission status
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,7 +29,6 @@ const LeadPopup = () => {
 
       if (response.ok) {
         setStatus("SUCCESS");
-        // Optional: Hide the popup automatically after 3 seconds of success
         setTimeout(() => setIsVisible(false), 3000);
       } else {
         setStatus("ERROR");
@@ -43,7 +42,7 @@ const LeadPopup = () => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-white text-black max-w-md w-full p-8 rounded-none relative border-[1px] border-red-600 ]">
+      <div className="bg-white text-black max-w-md w-full p-8 rounded-none relative border-[1px] border-red-600">
         
         <button 
           onClick={() => setIsVisible(false)}
@@ -70,11 +69,21 @@ const LeadPopup = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input 
                   type="email" 
-                  name="email" // Formspree looks for the "name" attribute
+                  name="email" 
                   placeholder="ENTER YOUR EMAIL" 
                   className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-red-600"
                   required
                 />
+                
+                {/* NEW FIELD: BEAT STYLE */}
+                <input 
+                  type="text" 
+                  name="beatStyle" 
+                  placeholder="WHAT'S YOUR GO TO TYPE OF BEAT?" 
+                  className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-red-600"
+                  required
+                />
+
                 <button 
                   type="submit"
                   className="w-full bg-black text-white py-4 font-black uppercase tracking-widest hover:bg-red-600 transition-colors"
@@ -89,7 +98,7 @@ const LeadPopup = () => {
           )}
           
           <p className="text-[10px] mt-4 opacity-50 uppercase font-bold">
-            No spam. Just heat. Unsubscribe anytime. <br></br>Litterally all I do is send beats.
+            No spam. Just heat. Unsubscribe anytime. <br></br>All I do is send beats.
           </p>
         </div>
       </div>
