@@ -1,24 +1,25 @@
 // src/components/Licensing.jsx
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import ContractModal from './ContractModal';
+import VinylStack from './VinylStack';
 
-// Animation variants for the parent container
+// Animation variants for the grid container
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Delay between each card's arrival,
+      staggerChildren: 0.15,
     },
   },
 };
 
-// Animation variants for each individual card
+// Animation variants for individual cards
 const cardVariants = {
   hidden: { 
     opacity: 0, 
-    y: 30 // Start 30px lower
+    y: 30 
   },
   visible: { 
     opacity: 1, 
@@ -33,6 +34,21 @@ const cardVariants = {
 const Licensing = () => {
   const [selectedLicense, setSelectedLicense] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Ref for tracking the scroll position of this specific section
+  const sectionRef = useRef(null);
+
+  // Setup scroll tracking for the background VinylStack
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"] 
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const licenses = [
     {
@@ -44,7 +60,7 @@ const Licensing = () => {
       contractDetails: {
         delivery: "High-quality Tagged MP3",
         rights: "Non-exclusive, non-transferable license",
-        usage: "Unlimited terrestrial/satellite radio and sync for video up to 5 mins",
+        usage: "Unlimited monetized audio/video streams, and live performances",
         ownership: "Producer remains sole owner of the Beat",
         publishing: "50% Licensor / 50% Licensee split"
       }
@@ -58,8 +74,8 @@ const Licensing = () => {
       contractDetails: {
         delivery: "High-quality WAV and MP3",
         rights: "Non-exclusive, non-transferable license",
-        usage: "Unlimited monetized audio/video streams",
-        ownership: "Producer remains sole owner",
+        usage: "Unlimited monetized audio/video streams, and live performances",
+        ownership: "Producer remains sole owner of the Beat",
         publishing: "50% Licensor / 50% Licensee split"
       }
     },
@@ -71,9 +87,9 @@ const Licensing = () => {
       popular: false,
       contractDetails: {
         delivery: "High-quality WAV, MP3, and Track Stems",
-        rights: "Non-exclusive license",
-        usage: "Unlimited for-profit and non-profit live performances",
-        ownership: "Master recording is a 'work made for hire' for Artist",
+        rights: "Non-exclusive, non-transferable license",
+        usage: "Unlimited monetized audio/video streams, and live performances",
+        ownership: "Producer remains sole owner of the Beat",
         publishing: "50% Licensor / 50% Licensee split"
       }
     },
@@ -84,10 +100,10 @@ const Licensing = () => {
       deals: "BUY 1 TRACK, GET 1 FREE!",
       popular: false,
       contractDetails: {
-        delivery: "Master recording of 'Preview Track Only'",
+        delivery: "High-quality WAV, MP3, and Track Stems",
         term: "Perpetuity (Forever) throughout the Universe",
         rights: "Sole and exclusive right to manufacture and sell the Master",
-        usage: "Public performance and inclusion in any audio-visual production",
+        usage: "Unlimited public performance and inclusion in any audio-visual production",
         ownership: "Master is a 'work made for hire' for the Artist",
         publishing: "50% Licensor / 50% Licensee split"
       }
@@ -107,15 +123,26 @@ const Licensing = () => {
   };
 
   return (
-    <section id="licensing" className="relative overflow-hidden py-24 px-6 text-center">
-      {/* --- PSYCHEDELIC BACKGROUND LAYER --- */}
+    <section 
+      id="licensing" 
+      ref={sectionRef} 
+      className="relative overflow-hidden py-24 px-6 text-center bg-white"
+    >
+      {/* --- BACKGROUND LAYERS --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Animated Background Pattern */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 animate-psyched-pan"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 opacity-30 animate-psyched-pan"
           style={{ 
             backgroundImage: `url('https://coolbackgrounds.imgix.net/5GbV8Si50TKkaulnxGwBa/f52a3d7e4d095c0ced0679c79f7d12f6/white-trianglify.jpg?w=3840&q=60&auto=format,compress')`,
           }}
         />
+        
+        {/* Reusable VinylStack as a subtle background element */}
+        <div className="absolute inset-0 opacity-10 blur-[1px]">
+            <VinylStack smoothProgress={smoothProgress} />
+        </div>
+
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px]" />
       </div>
 
@@ -130,7 +157,6 @@ const Licensing = () => {
           Licensing <span className="text-red-600">Options</span>
         </motion.h2>
         
-        {/* Animated Grid Container */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"

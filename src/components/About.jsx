@@ -35,8 +35,8 @@ const About = () => {
                 <br />
                 <p>Every note is a story,</p>
                 <p>Every sample a memory.</p>
-                <p>Every loop is a heartbeat,</p>
-                <p>Every beat a journey.</p>
+                <p>Every lyric is a heartbeat,</p>
+                <p>Every song a journey.</p>
                 <br />
                 <p>Don't worry about Perception,</p>
                 <p>Make art to feed the soul.</p>
@@ -73,13 +73,13 @@ const About = () => {
 
               {/* Stats/Quick Info */}
               <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
-                <div>
-                  <div className="text-4xl font-black text-white uppercase hover:text-red-600">100%</div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 hover:text-red-600">Human Made</div>
+                <div className="group cursor-default">
+                  <div className="text-4xl font-black text-white uppercase group-hover:text-red-600 transition-colors">100%</div>
+                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 group-hover:text-red-600 transition-colors">Human Made</div>
                 </div>
-                <div>
-                  <div className="text-4xl font-black text-white uppercase hover:text-red-600">Unique</div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 hover:text-red-600">Sonic DNA</div>
+                <div className="group cursor-default">
+                  <div className="text-4xl font-black text-white uppercase group-hover:text-red-600 transition-colors">Unique</div>
+                  <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1 group-hover:text-red-600 transition-colors">Sonic DNA</div>
                 </div>
               </div>
             </div>
