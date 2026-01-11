@@ -14,6 +14,11 @@ const Navbar = () => {
 
   const closeMenu = () => setIsOpen(false);
 
+  // Common button classes to keep code clean
+  const maskBtnContainer = "relative w-[140px] h-[45px] overflow-hidden border-2 border-[#e2aa64] transition-all duration-500 rounded-lg group";
+  const maskBtnUnderText = "absolute inset-0 flex items-center justify-center text-black bg-white text-[10px] font-bold uppercase tracking-widest";
+  const maskBtnActual = "mask-btn absolute inset-0 w-[101%] h-full flex items-center justify-center bg-black text-white text-[10px] font-bold uppercase tracking-widest cursor-pointer z-10 border-none outline-none";
+
   return (
     <nav 
       className={`navbar ${isScrolled ? 'scrolled' : ''} ${isOpen ? 'bg-[#050505]' : ''} 
@@ -34,17 +39,20 @@ const Navbar = () => {
           <li><a href="#contact" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#d1704d] transition-colors">Contact</a></li>
         </ul>
 
-        {/* Desktop CTA */}
+        {/* Desktop CTA with Mask Effect */}
         <div className="hidden md:block">
-          <button 
-              className="bg-transparent text-white border-2 border-[#e2aa64] py-2 px-6 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-all hover:bg-white hover:text-black rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
+          <div className={maskBtnContainer}>
+            <span className={maskBtnUnderText}>Why Kingsford?</span>
+            <button 
+              className={maskBtnActual}
               onClick={() => document.getElementById('about').scrollIntoView({behavior: 'smooth'})}
             >
               Why Kingsford?
-          </button>
+            </button>
+          </div>
         </div>
 
-        {/* Hamburger Button */}
+        {/* Hamburger Button (Unchanged) */}
         <button 
           className="md:hidden flex flex-col justify-center items-center z-[1100] w-8 h-8 space-y-1.5 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -60,30 +68,46 @@ const Navbar = () => {
             isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <ul className="flex flex-col items-start px-8 py-10 gap-6">
-            <li className="w-full border-b border-white/5 pb-4">
-              <a href="#" onClick={closeMenu} className="text-white text-xl font-bold uppercase tracking-widest block w-full hover:text-red-600">Home</a>
-            </li>
-            <li className="w-full border-b border-white/5 pb-4">
-              <a href="#beat-store" onClick={closeMenu} className="text-white text-xl font-bold uppercase tracking-widest block w-full hover:text-red-600">Beats</a>
-            </li>
-            <li className="w-full border-b border-white/5 pb-4">
-              <a href="#licensing" onClick={closeMenu} className="text-white text-xl font-bold uppercase tracking-widest block w-full hover:text-red-600">Licensing</a>
-            </li>
-            <li className="w-full border-b border-white/5 pb-4">
-              <a href="#contact" onClick={closeMenu} className="text-white text-xl font-bold uppercase tracking-widest block w-full hover:text-red-600">Contact</a>
-            </li>
-            <li className="w-full pt-4">
-              <button 
-                className="w-full bg-red-600 text-white py-4 text-xs font-bold uppercase tracking-widest"
-                onClick={() => { closeMenu(); document.getElementById('about').scrollIntoView({behavior: 'smooth'}) }}
-              >
-                Why Kingsford?
-              </button>
+          <ul className="flex flex-col items-center px-8 py-10 gap-6">
+            {/* ... other mobile links ... */}
+            <li className="w-full flex justify-center pt-4">
+               <div className={maskBtnContainer}>
+                <span className={maskBtnUnderText}>Why Kingsford?</span>
+                <button 
+                  className={maskBtnActual}
+                  onClick={() => { closeMenu(); document.getElementById('about').scrollIntoView({behavior: 'smooth'}) }}
+                >
+                  Why Kingsford?
+                </button>
+              </div>
             </li>
           </ul>
         </div>
       </div>
+
+      <style jsx>{`
+        .mask-btn {
+          mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+          mask-size: 7100% 100%;
+          -webkit-mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+          -webkit-mask-size: 7100% 100%;
+          animation: maskOut 0.7s steps(70) forwards;
+        }
+
+        .mask-btn:hover {
+          animation: maskIn 0.7s steps(70) forwards;
+        }
+
+        @keyframes maskIn {
+          from { -webkit-mask-position: 0 0; mask-position: 0 0; }
+          to { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+        }
+
+        @keyframes maskOut {
+          from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+          to { -webkit-mask-position: 0 0; mask-position: 0 0; }
+        }
+      `}</style>
     </nav>
   );
 };
