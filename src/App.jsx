@@ -1,4 +1,5 @@
 // src/App.jsx
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import UrgencyBanner from './components/UrgencyBanner'
 import Hero from './components/Hero'
@@ -8,18 +9,33 @@ import Licensing from './components/Licensing'
 import About from './components/About'
 import Contact from './components/Contact' 
 import LeadPopup from './components/LeadPopup' 
+import LoadingScreen from './components/LoadingScreen' // New component
 import './App.css'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // This simulates the loading period (2.5 seconds)
+    // You can adjust this to match your assets' loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="app-container relative overflow-x-clip">
-      {/* Updated header with flex-col to stack banner and nav */}
+      {/* Loading Overlay */}
+      {isLoading && <LoadingScreen />}
+
+      {/* Header section with stacked banners */}
       <header className="sticky top-0 z-[2000] w-full flex flex-col">
         <UrgencyBanner />
-          <section>
+        <section>
           <Navbar />
-          </section>
-
+        </section>
       </header>
       
       <main className="relative">
