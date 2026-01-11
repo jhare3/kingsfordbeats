@@ -42,11 +42,15 @@ const LeadPopup = () => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-white text-black max-w-md w-full p-8 rounded-none relative border-[1px] border-red-600">
+      {/* SHADOW ADDED BELOW:
+          shadow-[0_0_50px_-12px_rgba(226,170,102,0.6)] 
+          This creates a large, soft glow using your hex color.
+      */}
+      <div className="bg-white text-black max-w-md w-full p-8 rounded-none relative shadow-[0_0_60px_-15px_#e2aa64]">
         
         <button 
           onClick={() => setIsVisible(false)}
-          className="absolute top-2 right-4 text-2xl font-bold hover:text-red-600 transition-colors"
+          className="absolute top-2 right-4 text-2xl font-bold hover:text-[#d1704d] transition-colors"
         >
           &times;
         </button>
@@ -55,7 +59,7 @@ const LeadPopup = () => {
           {status === "SUCCESS" ? (
             <div className="py-8">
               <h2 className="text-2xl font-black uppercase mb-2">Beats will be in your inbox asap!</h2>
-              <p className="font-bold text-red-600">Your free beats are on the way.</p>
+              <p className="font-bold text-[#d1704d]">Your free beats are on the way.</p>
             </div>
           ) : (
             <>
@@ -63,7 +67,7 @@ const LeadPopup = () => {
                 Hol' Up!
               </h2>
               <p className="text-lg font-bold mb-6 italic">
-                Can I send you <span className="text-red-600">free beats</span> sometime??
+                Can I send you <span className="text-[#d1704d]">free beats</span> sometime??
               </p>
               
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -71,27 +75,26 @@ const LeadPopup = () => {
                   type="email" 
                   name="email" 
                   placeholder="ENTER YOUR EMAIL" 
-                  className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-red-600"
+                  className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-[#d1704d]"
                   required
                 />
                 
-                {/* NEW FIELD: BEAT STYLE */}
                 <input 
                   type="text" 
                   name="beatStyle" 
                   placeholder="WHAT'S YOUR GO TO TYPE OF BEAT?" 
-                  className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-red-600"
+                  className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-[#d1704d]"
                   required
                 />
 
                 <button 
                   type="submit"
-                  className="w-full bg-black text-white py-4 font-black uppercase tracking-widest hover:bg-red-600 transition-colors"
+                  className="w-full bg-black text-white py-4 font-black uppercase tracking-widest hover:bg-[#d1704d] transition-colors"
                 >
                   Send The Beats bro!
                 </button>
                 {status === "ERROR" && (
-                  <p className="text-red-600 text-xs font-bold mt-2">Oops! Something went wrong. Try again.</p>
+                  <p className="text-[#d1704d] text-xs font-bold mt-2">Oops! Something went wrong. Try again.</p>
                 )}
               </form>
             </>

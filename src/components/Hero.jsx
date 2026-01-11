@@ -53,7 +53,7 @@ const Hero = () => {
         <div className="text-center w-full px-4">
           {/* Entrance Animation from Bottom Corner */}
           <motion.div 
-            initial={{ opacity: 0, y: 300, x: 100, rotate: 10 }}
+            initial={{ opacity: 0, y: 100, x: 100, rotate: 10 }}
             animate={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >

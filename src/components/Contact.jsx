@@ -52,7 +52,7 @@ const Contact = () => {
               <input name="email" type="email" required placeholder="Email Address" className="w-full p-4 border-2 border-black font-bold uppercase text-xs tracking-widest focus:bg-black focus:text-white transition-all outline-none bg-white/50 backdrop-blur-sm" />
             </div>
             <textarea name="message" rows="5" required placeholder="How can I help?" className="w-full p-4 border-2 border-black font-bold uppercase text-xs tracking-widest focus:bg-black focus:text-white transition-all outline-none resize-none bg-white/50 backdrop-blur-sm"></textarea>
-            <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full bg-black text-white py-5 font-black uppercase tracking-[0.3em] text-sm hover:bg-red-600 transition-colors">
+            <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full bg-black text-white py-5 font-black uppercase tracking-[0.3em] text-sm hover:bg-[#023bbb] transition-colors">
               Send Inquiry
             </motion.button>
           </form>
