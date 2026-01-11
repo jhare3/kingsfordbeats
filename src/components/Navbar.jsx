@@ -32,10 +32,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav 
-        className={`relative w-full transition-all duration-500 ease-in-out z-[1001] 
-        ${isScrolled ? 'bg-[#050505]/95 backdrop-blur-md py-3 shadow-xl' : 'bg-[#050505] py-5'}`}
-      >
+      // src/components/Navbar.jsx
+
+        <nav 
+          className={`w-full transition-all duration-500 ease-in-out z-[1001] 
+          ${isScrolled ? 'bg-[#050505]/95 backdrop-blur-md py-3 shadow-xl' : 'bg-[#050505] py-5'}`}
+        >
         <div className="max-w-[1200px] w-full mx-auto flex justify-between items-center px-6 md:px-8">
           
           <div className="text-xl md:text-3xl font-black tracking-tighter text-white z-[1100]">

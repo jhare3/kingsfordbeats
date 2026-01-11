@@ -13,8 +13,8 @@ import './App.css'
 function App() {
   return (
     <div className="app-container relative overflow-x-clip">
-      {/* Grouped Header to fix stacking on iPhone SE/14 */}
-      <header className="sticky top-0 z-[2000] w-full">
+      {/* Updated header with flex-col to stack banner and nav */}
+      <header className="sticky top-0 z-[2000] w-full flex flex-col">
         <UrgencyBanner />
         <Navbar />
       </header>
