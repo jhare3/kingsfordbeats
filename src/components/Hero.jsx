@@ -7,10 +7,28 @@ const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    // Initialize audio with crackle sound
     audioRef.current = new Audio('/vinyl-crackle.wav');
     audioRef.current.loop = true;
     audioRef.current.volume = 0.7;
+
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, []);
+
+  // Centralized function to stop audio and reset state
+  const stopAudio = () => {
+    setIsHovered(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0; // Reset to start
+    }
+  };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -20,14 +38,13 @@ const Hero = () => {
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0; 
-    }
+    stopAudio();
   };
 
   const scrollToPlayer = () => {
+    // Force audio to stop on click to fix mobile "sticky" hover issues
+    stopAudio();
+
     const player = document.getElementById('beat-store');
     if (player) {
       window.scrollTo({ top: player.offsetTop - 110, behavior: 'smooth' });
@@ -36,7 +53,7 @@ const Hero = () => {
 
   return (
     <section ref={sectionRef} className="hero relative h-screen bg-zinc-900 overflow-hidden">
-      {/* Background Layer (Unchanged) */}
+      {/* Background Layers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
           className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 transition-opacity duration-700 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
@@ -51,7 +68,6 @@ const Hero = () => {
 
       <div className="relative h-full w-full flex items-center justify-center z-10">
         <div className="text-center w-full px-4">
-          {/* Entrance Animation from Bottom Corner */}
           <motion.div 
             initial={{ opacity: 0, y: 100, x: 100, rotate: 10 }}
             animate={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
@@ -60,17 +76,19 @@ const Hero = () => {
             {/* MASK BUTTON CONTAINER */}
             <div className="relative w-[280px] h-[70px] mx-auto overflow-hidden border-2 border-[#e2aa64] rounded-full group">
               
-              {/* Layer 1: The "Under" state (White background, Black text) */}
+              {/* Layer 1: The "Under" state */}
               <span className="absolute inset-0 flex items-center justify-center bg-white text-black font-bold uppercase tracking-[0.2em] text-sm pointer-events-none">
                 Browse Beats
               </span>
 
-              {/* Layer 2: The "Over" state (Black background, White text) */}
+              {/* Layer 2: The "Over" state */}
               <button 
                 className="mask-hero absolute inset-0 w-[101%] h-full flex items-center justify-center bg-black text-white font-bold uppercase tracking-[0.2em] text-sm cursor-pointer z-10 border-none outline-none"
                 onClick={scrollToPlayer}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
+                // onTouchStart improves trigger response on mobile devices
+                onTouchStart={handleMouseEnter}
               >
                 Browse Beats
               </button>
@@ -79,7 +97,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Sprite Animation Styles */}
       <style jsx>{`
         .mask-hero {
           mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
