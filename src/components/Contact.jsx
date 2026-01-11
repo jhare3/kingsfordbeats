@@ -50,7 +50,7 @@ const Contact = () => {
         <div className="space-y-8">
           <div>
             <h2 className="text-4xl font-black uppercase tracking-widest mb-4">
-              All <span className="text-red-600">Inquiries</span>
+              All <span className="text-[#d1704d]">Inquiries</span>
             </h2>
             <p className="text-sm font-bold uppercase tracking-widest opacity-60">
               Direct all questions, booking, and collaboration requests below.

@@ -154,7 +154,7 @@ const Licensing = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl font-black uppercase tracking-widest text-black mb-16"
         >
-          Licensing <span className="text-red-600">Options</span>
+          Licensing <span className="text-[#d1704d]">Options</span>
         </motion.h2>
         
         <motion.div 
@@ -172,10 +172,10 @@ const Licensing = () => {
             >
               <div 
                 className={`flex flex-col p-10 h-full relative border-t-4 transition-all duration-300 hover:-translate-y-2 shadow-2xl rounded-2xl overflow-hidden
-                ${license.popular ? 'bg-black text-white border-red-600 scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-black border-black'}`}
+                ${license.popular ? 'bg-black text-white border-[#d1704d] scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-black border-black'}`}
               >
                 {license.popular && (
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-red-600 px-2 py-1 text-white">
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-widest uppercase bg-[#d1704d] px-2 py-1 text-white">
                     ★ Popular
                   </div>
                 )}
@@ -185,7 +185,7 @@ const Licensing = () => {
                 
                 <button 
                   className={`mt-auto py-4 font-black uppercase tracking-widest text-xs transition-all border-2 
-                  ${license.popular ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'bg-black text-white border-black hover:bg-red-600 hover:border-red-600'}`}
+                  ${license.popular ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'bg-black text-white border-black hover:bg-[#d1704d] hover:border-[#d1704d]'}`}
                   onClick={() => openModal(license)}
                 >
                   Read License

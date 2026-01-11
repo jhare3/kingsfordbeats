@@ -23,21 +23,21 @@ const Navbar = () => {
         
         {/* Logo */}
         <div className="text-2xl md:text-3xl tracking-normal z-[1100] text-white">
-          KINGSFORD<span className="text-red-600 uppercase">BEATS</span>
+          KINGSFORD<span className="text-[#e2aa64] uppercase">BEATS</span>
         </div>
         
         {/* Desktop Navigation */}
         <ul className="hidden md:flex list-none gap-10">
-          <li><a href="#" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">Home</a></li>
-          <li><a href="#beat-store" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">Beats</a></li> 
-          <li><a href="#licensing" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">Licensing</a></li>
-          <li><a href="#contact" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">Contact</a></li>
+          <li><a href="#" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#d1704d] transition-colors">Home</a></li>
+          <li><a href="#beat-store" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#d1704d] transition-colors">Beats</a></li> 
+          <li><a href="#licensing" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#d1704d] transition-colors">Licensing</a></li>
+          <li><a href="#contact" className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#d1704d] transition-colors">Contact</a></li>
         </ul>
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <button 
-              className="bg-transparent text-white border-2 border-white py-2 px-6 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-all hover:bg-white hover:text-black rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
+              className="bg-transparent text-white border-2 border-[#e2aa64] py-2 px-6 text-[10px] font-bold uppercase tracking-widest cursor-pointer transition-all hover:bg-white hover:text-black rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
               onClick={() => document.getElementById('about').scrollIntoView({behavior: 'smooth'})}
             >
               Why Kingsford?

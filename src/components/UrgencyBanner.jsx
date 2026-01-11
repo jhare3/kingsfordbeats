@@ -45,14 +45,14 @@ const UrgencyBanner = () => {
         <div className="animate-liquid-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"></div>
       </div>
 
-      <span className="relative z-10 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold hover:text-red-600">
-        Limited Time Bulk Deal: <span className="text-red-500">Buy 2 Get 10 Free</span> ends in
+      <span className="relative z-10 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold hover:text-[#e2aa64]">
+        Limited Time Bulk Deal: <span className="text-[#d1704d]">Buy 2 Get 10 Free</span> ends in
       </span>
       
       <div className="relative z-10 font-mono text-lg md:text-xl text-white font-black flex gap-1">
         <span className="bg-black/30 px-1 rounded">{format(timeLeft.hours)}</span>:
         <span className="bg-black/30 px-1 rounded">{format(timeLeft.minutes)}</span>:
-        <span className="bg-black/30 px-1 rounded text-red-500">{format(timeLeft.seconds)}</span>
+        <span className="bg-black/30 px-1 rounded text-[#d1704d]">{format(timeLeft.seconds)}</span>
       </div>
     </div>
   );

@@ -9,13 +9,13 @@ const PromoBanner = () => {
         
         {/* Bulk Deals Section */}
         <div className="flex items-center gap-3">
-          <div className="bg-red-600 p-2 rounded-full">
+          <div className="bg-[#d1704d] p-2 rounded-full">
             <Tag size={16} className="text-white" />
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-tighter">Limited Time Offer</p>
             <p className="text-sm font-medium text-gray-300">
-              Buy 2, Get <span className="text-red-500 font-bold">10 FREE</span> — 10% OFF USE CODE: <span className="text-red-500 font-bold">KING10</span>
+              Buy 2, Get <span className="text-[#d1704d] font-bold">10 FREE</span> — 10% OFF USE CODE: <span className="text-[#d1704d] font-bold">KING10</span>
             </p>
           </div>
         </div>
