@@ -42,7 +42,7 @@ function App() {
         <Hero />
         <PromoBanner />
 
-        <section id="beat-store" className="main-content">
+        <section id="beats" className="main-content">
           <BeatPlayer />
         </section>
         
