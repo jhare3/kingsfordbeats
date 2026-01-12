@@ -62,7 +62,7 @@ const Navbar = () => {
               <span className={maskBtnUnderText}>Why Kingsford?</span>
               <button 
                 className={maskBtnActual}
-                onClick={() => document.getElementById('about').scrollIntoView({behavior: 'smooth'})}
+                onClick={() => document.getElementById('#about').scrollIntoView({behavior: 'smooth'})}
               >
                 Why Kingsford?
               </button>
