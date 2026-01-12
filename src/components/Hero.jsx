@@ -45,7 +45,7 @@ const Hero = () => {
     // Force audio to stop on click to fix mobile "sticky" hover issues
     stopAudio();
 
-    const player = document.getElementById('beat-store');
+    const player = document.getElementById('beats');
     if (player) {
       window.scrollTo({ top: player.offsetTop - 110, behavior: 'smooth' });
     }
