@@ -33,7 +33,6 @@ const Contact = () => {
         <div className="absolute inset-0 opacity-10 blur-[1px]">
             <VinylStack smoothProgress={smoothProgress} />
         </div>
-        <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]" />
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start relative z-10 text-black">

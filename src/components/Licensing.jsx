@@ -137,11 +137,6 @@ const Licensing = () => {
             backgroundColor: 'white',
         }}
         />
-        
-        {/* Reusable VinylStack as a subtle background element */}
-        <div className="absolute inset-0 opacity-10 blur-[1px]">
-            <VinylStack smoothProgress={smoothProgress} />
-        </div>
 
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px]" />
       </div>
