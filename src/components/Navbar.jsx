@@ -12,19 +12,40 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // iOS Safari specific scroll lock
+  // FIXED: Removed position: fixed which was resetting scroll to Hero
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
     } else {
       document.body.style.overflow = 'unset';
-      document.body.style.position = 'static';
     }
   }, [isOpen]);
 
   const closeMenu = () => setIsOpen(false);
+
+  // Unified scroll handler to prevent default anchor jumps
+  const handleScrollToAbout = (e) => {
+    e.preventDefault();
+    closeMenu();
+    
+    // Timeout ensures the mobile menu starts closing before scroll calculation
+    setTimeout(() => {
+      const element = document.getElementById('about');
+      if (element) {
+        // Offset for the sticky header
+        const offset = 120; 
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 150);
+  };
 
   const maskBtnContainer = "relative w-[150px] h-[48px] overflow-hidden border-2 border-[#e2aa64] transition-all duration-500 rounded-lg group";
   const maskBtnUnderText = "absolute inset-0 flex items-center justify-center text-black bg-white text-[10px] font-bold uppercase tracking-widest";
@@ -32,12 +53,10 @@ const Navbar = () => {
 
   return (
     <>
-      // src/components/Navbar.jsx
-
-        <nav 
-          className={`w-full transition-all duration-500 ease-in-out z-[1001] 
-          ${isScrolled ? 'bg-[#050505]/95 backdrop-blur-md py-3 shadow-xl' : 'bg-[#050505] py-5'}`}
-        >
+      <nav 
+        className={`w-full transition-all duration-500 ease-in-out z-[1001] 
+        ${isScrolled ? 'bg-[#050505]/95 backdrop-blur-md py-3 shadow-xl' : 'bg-[#050505] py-5'}`}
+      >
         <div className="max-w-[1200px] w-full mx-auto flex justify-between items-center px-6 md:px-8">
           
           <div className="text-xl md:text-3xl font-black tracking-tighter text-white z-[1100]">
@@ -62,7 +81,7 @@ const Navbar = () => {
               <span className={maskBtnUnderText}>Why Kingsford?</span>
               <button 
                 className={maskBtnActual}
-                onClick={() => document.getElementById('about').scrollIntoView({behavior: 'smooth'})}
+                onClick={handleScrollToAbout}
               >
                 Why Kingsford?
               </button>
@@ -80,7 +99,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Break-out Mobile Menu */}
+      {/* Mobile Menu */}
       <div 
         className={`fixed inset-0 w-full h-screen bg-[#050505] transition-all duration-500 ease-in-out md:hidden flex items-center justify-center z-[9999] ${
           isOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible'
@@ -110,7 +129,7 @@ const Navbar = () => {
               <span className={maskBtnUnderText}>Why Kingsford?</span>
               <button 
                 className={maskBtnActual}
-                onClick={() => { closeMenu(); document.getElementById('about').scrollIntoView({behavior: 'smooth'}) }}
+                onClick={handleScrollToAbout}
               >
                 Why Kingsford?
               </button>

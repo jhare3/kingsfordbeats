@@ -30,12 +30,11 @@ function App() {
       {/* Loading Overlay */}
       {isLoading && <LoadingScreen />}
 
-      {/* Header section with stacked banners */}
-      <header className="sticky top-0 z-[2000] w-full flex flex-col">
-        <UrgencyBanner />
-        <section>
-          <Navbar />
-        </section>
+      <header className="sticky top-0 z-[2000] w-full">
+        <div className="flex flex-col">
+          <UrgencyBanner />
+         <Navbar />
+       </div>
       </header>
       
       <main className="relative">

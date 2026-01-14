@@ -2,8 +2,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="relative py-24 bg-black overflow-hidden">
-      
+  <section id="about" className="relative py-24 bg-black overflow-hidden" style={{ scrollMarginTop: '100px' }}>
+
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0 flex flex-col md:flex-row pointer-events-none">
         <div 
