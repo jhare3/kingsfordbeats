@@ -28,10 +28,10 @@ const UrgencyBanner = () => {
   };
 
   return (
-    /* Liquid Glass Effect: uses backdrop-blur, semi-transparent bg, and a custom shine animation */
+    /* Changed from fixed to relative to prevent overlapping the Navbar */
     <div 
       onClick={scrollToDeals}
-      className="fixed top-0 left-0 w-full z-[1100] cursor-pointer
+      className="relative w-full z-[1100] cursor-pointer
                  bg-white/10 backdrop-blur-xl border-b border-white/20
                  py-2 px-4 flex justify-center items-center gap-4
                  transition-all hover:bg-white/20"

@@ -32,9 +32,9 @@ function App() {
 
       <header className="sticky top-0 z-[2000] w-full">
         <div className="flex flex-col">
-          <UrgencyBanner />
-         <Navbar />
-       </div>
+          <UrgencyBanner /> {/* Now occupies the top space */}
+          <div><Navbar /></div> {/* Now sits directly below the banner */}
+        </div>
       </header>
       
       <main className="relative">
