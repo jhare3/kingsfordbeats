@@ -82,7 +82,7 @@ const LeadPopup = () => {
                 <input 
                   type="text" 
                   name="beatStyle" 
-                  placeholder="WHAT'S YOUR GO TO TYPE OF BEAT?" 
+                  placeholder="WHAT'S YOUR FAVORITE TYPE OF BEAT?" 
                   className="w-full p-3 border-2 border-black font-bold uppercase text-sm focus:outline-none focus:border-[#d1704d]"
                   required
                 />
