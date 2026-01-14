@@ -133,9 +133,9 @@ const Licensing = () => {
         {/* Animated Background Pattern */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 opacity-30 animate-psyched-pan"
-          style={{ 
-            backgroundImage: `url('https://coolbackgrounds.imgix.net/5GbV8Si50TKkaulnxGwBa/f52a3d7e4d095c0ced0679c79f7d12f6/white-trianglify.jpg?w=3840&q=60&auto=format,compress')`,
-          }}
+          style={{
+            backgroundColor: 'white',
+        }}
         />
         
         {/* Reusable VinylStack as a subtle background element */}

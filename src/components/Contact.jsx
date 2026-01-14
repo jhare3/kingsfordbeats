@@ -28,7 +28,7 @@ const Contact = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 animate-psyched-pan opacity-30"
-          style={{ backgroundImage: `url('https://coolbackgrounds.imgix.net/5GbV8Si50TKkaulnxGwBa/f52a3d7e4d095c0ced0679c79f7d12f6/white-trianglify.jpg?w=3840&q=60&auto=format,compress')` }}
+          style={{ backgroundColor: 'white' }}
         />
         <div className="absolute inset-0 opacity-10 blur-[1px]">
             <VinylStack smoothProgress={smoothProgress} />
