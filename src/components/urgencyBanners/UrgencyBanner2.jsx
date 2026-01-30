@@ -23,12 +23,18 @@ const UrgencyBanner = () => {
 
   const format = (num) => String(num).padStart(2, '0');
 
+  const scrollToDeals = () => {
+    document.getElementById('beat-store')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
+    /* Changed from fixed to relative to prevent overlapping the Navbar */
     <div 
-      className="relative w-full z-[1100]
+      onClick={scrollToDeals}
+      className="relative w-full z-[1100] cursor-pointer
                  bg-white/10 backdrop-blur-xl border-b border-white/20
-                 py-3 px-4 flex flex-col md:flex-row justify-center items-center gap-6
-                 transition-all"
+                 py-2 px-4 flex justify-center items-center gap-4
+                 transition-all hover:bg-white/20"
       style={{
         background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%)',
         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
@@ -39,30 +45,15 @@ const UrgencyBanner = () => {
         <div className="animate-liquid-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"></div>
       </div>
 
-      <div className="flex items-center gap-3">
-        <span className="relative z-10 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold">
-          Beat Pack: <span className="text-[#d1704d]">20 Beats for $30</span> ends in
-        </span>
-        
-        <div className="relative z-10 font-mono text-lg md:text-xl text-white font-black flex gap-1">
-          <span className="bg-black/30 px-1 rounded">{format(timeLeft.hours)}</span>:
-          <span className="bg-black/30 px-1 rounded">{format(timeLeft.minutes)}</span>:
-          <span className="bg-black/30 px-1 rounded text-[#d1704d]">{format(timeLeft.seconds)}</span>
-        </div>
+      <span className="relative z-10 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold hover:text-[#e2aa64]">
+        Limited Time Bulk Deal: <span className="text-[#d1704d]">Buy 2 Get 10 Free</span> ends in
+      </span>
+      
+      <div className="relative z-10 font-mono text-lg md:text-xl text-white font-black flex gap-1">
+        <span className="bg-black/30 px-1 rounded">{format(timeLeft.hours)}</span>:
+        <span className="bg-black/30 px-1 rounded">{format(timeLeft.minutes)}</span>:
+        <span className="bg-black/30 px-1 rounded text-[#d1704d]">{format(timeLeft.seconds)}</span>
       </div>
-
-      {/* Purchase Button Link */}
-      <a 
-        href="https://bsta.rs/oAP4x"
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="relative z-10 px-6 py-2 bg-[#d1704d] hover:bg-[#e2aa64] 
-                   text-white text-[10px] md:text-xs font-bold uppercase tracking-widest 
-                   rounded-full transition-all duration-300 shadow-lg shadow-orange-900/40
-                   hover:scale-105 active:scale-95"
-      >
-        Buy Now
-      </a>
     </div>
   );
 };
