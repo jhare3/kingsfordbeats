@@ -265,3 +265,21 @@ body {
 .animate-steam {
   animation: steam 2s infinite ease-in-out;
 }
+
+@keyframes border-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-border-spin {
+  animation: border-spin 2s linear infinite;
+}
+
+@keyframes liquid-shine {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.animate-liquid-shine {
+  animation: liquid-shine 4s ease-in-out infinite;
+}
