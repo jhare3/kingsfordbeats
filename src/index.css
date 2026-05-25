@@ -1,32 +1,58 @@
-/* 1. External font imports MUST be first */
-@import url('https://fonts.googleapis.com/css2?family=Gladolia&display=swap');
-
-/* 2. Tailwind import second */
+/* src/index.css */
 @import "tailwindcss";
 
-/* 3. Theme configuration third */
 @theme {
   --font-groovy: "Gladolia", sans-serif;
+  
+  /* Your existing animations */
+  --animate-border-spin: border-spin 2s linear infinite;
+  --animate-liquid-shine: liquid-shine 4s ease-in-out infinite;
+  --animate-glass-rotate: glass-rotate 4s linear infinite;
+  
+  /* NEW: Deep, rhythmic breathing animation loop */
+  --animate-throb: throb 3s ease-in-out infinite;
+  
+  @keyframes glass-rotate {
+    0% { --glass-angle: 0deg; }
+    100% { --glass-angle: 360deg; }
+  }
+
+  /* Smooth, heavy structural expansion and contraction */
+  @keyframes throb {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 50px -15px rgba(226, 170, 102, 0.4);
+    }
+    50% {
+      transform: scale(1.025);
+      box-shadow: 0 0 75px -5px rgba(217, 112, 77, 0.6);
+    }
+  }
+}
+
+@property --glass-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 @layer base {
   @font-face {
     font-family: 'Gladolia';
-    src: url('./fonts/Gladolia.woff2') format('woff2'); /* Ensure path is correct */
+    src: url('./fonts/Gladolia.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }
 
-:root {
-  --brand-gold: #ffffff;
-  --bg-dark: #000000;
-}
-body {
-  background-color: var(--bg-dark);
-  color: rgb(246, 246, 246);
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-}
+  :root {
+    --brand-gold: #ffffff;
+    --bg-dark: #000000;
+  }
 
+  body {
+    background-color: var(--bg-dark);
+    color: rgb(246, 246, 246);
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
 }
-

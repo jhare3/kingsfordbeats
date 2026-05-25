@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+// src/components/Navbar.jsx
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,7 +13,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // FIXED: Removed position: fixed which was resetting scroll to Hero
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -23,16 +23,13 @@ const Navbar = () => {
 
   const closeMenu = () => setIsOpen(false);
 
-  // Unified scroll handler to prevent default anchor jumps
   const handleScrollToAbout = (e) => {
     e.preventDefault();
     closeMenu();
     
-    // Timeout ensures the mobile menu starts closing before scroll calculation
     setTimeout(() => {
       const element = document.getElementById('about');
       if (element) {
-        // Offset for the sticky header
         const offset = 120; 
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = element.getBoundingClientRect().top;
@@ -63,18 +60,31 @@ const Navbar = () => {
             KINGSFORD<span className="text-[#e2aa64] uppercase">BEATS</span>
           </div>
           
-          <ul className="hidden md:flex list-none gap-8">
-            {['Home', 'Beats', 'Licensing', 'Contact'].map((item) => (
-              <li key={item}>
-                <a 
-                  href={item === 'Home' ? '#' : `#${item.toLowerCase().replace(' ', '-')}`} 
-                  className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#e2aa64] transition-colors"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex list-none gap-8 m-0 p-0">
+              {['Home', 'Beats', 'Licensing', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={item === 'Home' ? '#' : `#${item.toLowerCase().replace(' ', '-')}`} 
+                    className="text-white no-underline text-xs font-bold uppercase tracking-widest hover:text-[#e2aa64] transition-colors"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Pulsating/Breathing Desktop VIP Pass Tab */}
+            <a 
+              href="https://kingsfordmusic.beatstars.com/memberships" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="animate-throb border border-[#e2aa64]/40 bg-[#e2aa64]/15 backdrop-blur-md text-white px-4 py-2 font-black uppercase tracking-widest text-[10px] hover:bg-[#d1704d] hover:text-white hover:border-[#d1704d] transform transition-all duration-300 rounded-md cursor-pointer"
+            >
+              ★ ALL ACCESS PASS
+            </a>
+          </div>
 
           <div className="hidden md:block">
             <div className={maskBtnContainer}>
@@ -112,7 +122,7 @@ const Navbar = () => {
           Close ✕
         </button>
 
-        <ul className="flex flex-col items-center gap-10">
+        <ul className="flex flex-col items-center gap-8 text-center">
           {['Home', 'Beats', 'Licensing', 'Contact'].map((item) => (
             <li key={item}>
               <a 
@@ -124,7 +134,21 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          <li className="mt-6">
+          
+          {/* Pulsating/Breathing Mobile VIP Pass Button */}
+          <li className="mt-4">
+            <a 
+              href="https://kingsfordmusic.beatstars.com/memberships" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="animate-throb inline-block border-2 border-[#e2aa64] bg-[#e2aa64]/10 backdrop-blur-md text-[#e2aa64] px-8 py-3.5 font-black uppercase tracking-widest text-xs hover:bg-[#d1704d] hover:text-white hover:border-[#d1704d] transition-all duration-300 rounded-lg shadow-lg cursor-pointer"
+            >
+              ★ CLAIM VIP PASS
+            </a>
+          </li>
+
+          <li className="mt-2">
             <div className={maskBtnContainer}>
               <span className={maskBtnUnderText}>Why Kingsford?</span>
               <button 

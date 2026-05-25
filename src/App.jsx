@@ -8,20 +8,20 @@ import BeatPlayer from './components/BeatPlayer'
 import Licensing from './components/Licensing'
 import About from './components/About'
 import Contact from './components/Contact' 
-import LeadPopup from './components/LeadPopup' 
-import LoadingScreen from './components/LoadingScreen' // New component
+import SubscriptionPopup from './components/SubscriptionPopup' // <-- Imported here
+import LoadingScreen from './components/LoadingScreen' 
 import './App.css'
+
+// src/App.jsx
+// ... keep your imports exactly the same ...
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // This simulates the loading period (2.5 seconds)
-    // You can adjust this to match your assets' loading time
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -32,8 +32,7 @@ function App() {
 
       <header className="sticky top-0 z-[2000] w-full">
         <div className="flex flex-col">
-          <UrgencyBanner /> {/* Now occupies the top space */}
-          <div><Navbar /></div> {/* Now sits directly below the banner */}
+          <div><Navbar /></div> 
         </div>
       </header>
       
@@ -48,6 +47,9 @@ function App() {
         <Licensing />
         <About />
         <Contact /> 
+        
+        {/* MOVED HERE: Mounts safely inside the relative main container */}
+        <SubscriptionPopup />
       </main>
 
       <footer className="bg-white text-black py-8 border-t border-black/10 text-center">
@@ -55,10 +57,8 @@ function App() {
           &copy; {new Date().getFullYear()} KINGSFORDBEATS | All Rights Reserved
         </p>
       </footer>
-
-      <LeadPopup />
     </div>
   )
 }
 
-export default App
+export default App;
