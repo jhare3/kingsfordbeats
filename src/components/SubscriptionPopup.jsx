@@ -79,11 +79,11 @@ const SubscriptionPopup = () => {
               </p>
               
               <p className="opacity-90">
-                Most guys charge $30 to $100 <strong>every single time</strong> you want a beat license. If you're dropping projects constantly, that model is broken.
+                Most guys charge $30 to $100 <strong>every single time</strong> you want a beat license. If you're prolific with your music, and dropping songs constantly, that model is broken.
               </p>
               
               <p className="opacity-90">
-                I don't believe in forcing artists to ration their creativity based on a budget. So I changed the rules.
+                I don't believe in forcing up-and-coming artists to ration their creativity based on a budget. So I changed the rules.
               </p>
 
               {/* UPDATED: Translucent, Clickable Price Box with Fluid Material Hover */}
